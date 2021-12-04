@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'grave', loadChildren: () => import('./grave/grave.module').then(m => m.GraveModule) }, 
   { path: 'corpse', loadChildren: () => import('./corpse/corpse.module').then(m => m.CorpseModule) }, 
   { path: 'menu', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },
-  { path: 'transaction', loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule) }];
+  { path: 'transaction', loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule) },
+  { path: 'reservation', loadChildren: () => import('./reservation/reservation.module').then(m => m.ReservationModule) }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

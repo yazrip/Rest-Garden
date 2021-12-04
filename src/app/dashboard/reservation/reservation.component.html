@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-3">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-9">
+        <div class="card shadow-lg mt-4 mx-3 p-4" style="background-color: #D8E9A8; border-radius: 20px; border-style: none;">
+            <h1 class="mb-5" style="color: #1E5128;"><b>Reservation List</b></h1>
+            <div class="table-responsive">
+                <table class="table table-responsive" style="color: #1E5128;">
+                    <thead class="thead-dark">
+                        <tr class="text-center">
+                            <th scope="col">Id</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">User Balance</th>
+                            <th scope="col">Grave Name</th>
+                            <th scope="col">Grave Price</th>
+                            <th scope="col">Total Slot</th>
+                            <th scope="col">Expired Date</th>
+                            <th scope="col">Description</th> 
+                        </tr>
+                    </thead>
+                    <ng-container *ngIf="reservations.length > 0; else kosong">
+                        <tbody *ngFor="let reservation of reservations">
+                            <tr>
+                                <td>{{ reservation.id }}</td>
+                                <td>{{ reservation.userName }}</td>
+                                <td>{{ reservation.userBalance }}</td>
+                                <td>{{ reservation.graveName }}</td>
+                                <td>{{ reservation.gravePrice }}</td>
+                                <td>{{ reservation.totalSlot }}</td>
+                                <td>{{ reservation.expiredDate }}</td>
+                                <td>{{ reservation.description }}</td>
+                            </tr>
+                        </tbody>
+                    </ng-container>
+                    <ng-template #kosong>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" rowspan="5" class="text-center mt-2 fs-5 fw-bold">
+                                    Data Kosong
+                                </td>
+                            </tr>
+                        </tbody>
+                    </ng-template>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

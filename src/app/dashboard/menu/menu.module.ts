@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MenuRoutingModule } from './menu-routing.module';
 import { MenuComponent } from './menu.component';
 import { RouterModule } from '@angular/router';
+import { TransactionModule } from '../transaction/transaction.module';
 
 
 @NgModule({

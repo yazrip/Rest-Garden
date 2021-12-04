@@ -37,19 +37,16 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.storage.setItem('authForm', JSON.stringify(this.authForm))
     console.log('Login value : ', this.authForm.value);
-    // this.data = this.authForm.value;
-    if (this.authForm.valid) {
-      this.authService
-      .signin(this.authForm.value)
-      .subscribe((response:any) => {
-        sessionStorage.setItem('token', response.token),
-        sessionStorage.setItem('username', this.authForm.get('username')?.value)
-      }, console.error)
-      // this.storage.setItem('authForm', JSON.stringify(this.authForm.value))
+    // if (this.authForm.valid) {
+    //   this.authService
+    //   .signin(this.authForm.value)
+    //   .subscribe((response:any) => {
+    //     sessionStorage.setItem('token', response.token),
+    //     sessionStorage.setItem('username', this.authForm.get('username')?.value)
+    //   }, console.error)
       this.router.navigateByUrl('/dashboard')
-    }
+  // }
   }
 
   isValid(): boolean {

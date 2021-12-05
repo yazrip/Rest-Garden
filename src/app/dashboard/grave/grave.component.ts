@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observer } from 'rxjs';
+
+import { Grave } from './model/grave-model';
+
 
 @Component({
   selector: 'app-grave',
@@ -10,6 +14,9 @@ export class GraveComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
+
+  
 
 }

@@ -81,6 +81,7 @@
             },
             "development": {
               "browserTarget": "rest-garden:build:development"
+              
             }
           },
           "defaultConfiguration": "development"

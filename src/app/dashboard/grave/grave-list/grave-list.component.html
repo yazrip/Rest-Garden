@@ -10,13 +10,47 @@
         <tr>
           <th scope="col">Grave ID</th>
           <th scope="col">Name Grave</th>
-          <th scope="col">Slots Grave</th>
-          <th scope="col">Phone Number</th>
           <th scope="col">Type</th>
+          <th scope="col">Available Slots</th>
+          <th scope="col">Phone Number</th>
           <th scope="col">Address</th>
           <th scope="col">Action</th>
-          
         </tr>
       </thead>
+      <ng-container *ngIf="graves.length > 0; else kosong">
+        <tbody *ngFor="let grave of graves">
+          <tr>
+            <td scope="row"> {{ grave.id }}</td>
+            <td scope="row"> {{ grave.name }} </td>
+            <td scope="row"> {{ grave.type }} </td>
+            <td scope="row"> {{ grave.availableSlots }} </td>
+            <td scope="row"> {{ grave.phoneNumber }} </td>
+            <td scope="row"> {{ grave.address }} </td>
+            <td> 
+              <div>
+                <button 
+                type="button" 
+                class="btn btn-warning m-1"
+                routerLink="/grave/{{grave.id}}">
+                <i class="bi bi-box-arrow-right"></i>
+                Edit</button>
+                <button 
+                type="button" 
+                class="btn btn-warning m-1"
+                (click)="onDeleteGrave(grave.id)">Delete</button>
+             </div>
+              </td>
+          </tr>
+        </tbody>
+      </ng-container>
+      <ng-template #kosong>
+        <tbody>
+          <tr>
+              <td colspan="8" rowspan="5" class="text-center mt-2 fs-5 fw-bold">
+                  Data Kosong
+              </td>
+          </tr>
+      </tbody>
+      </ng-template>
     </table>
   </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { Login } from 'src/app/auth/model/login-model';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { User } from '../model/user-model';
@@ -24,6 +25,8 @@ export class UserFormComponent implements OnInit {
     phoneNumber: new FormControl(null, [Validators.required]),
     address: new FormControl(null, [Validators.required])
   });
+  
+  id: string | null = null;
 
   setFormValues(user: User): void {
     this.userForm.addControl('id', new FormControl);
@@ -47,7 +50,21 @@ export class UserFormComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    
+    this.activatedRoute.params.pipe(
+      map((params: any) => params.id),
+      switchMap((id: string) => {
+        if (!id) { return EMPTY }
+        else { this.id = id; return this.userService.getUsersById(id) }
+      })
+    ).subscribe(
+      (user: User) => {
+        if (user) {
+          this.setFormValues(user);
+        }
+      },
+      (error) => console.error(error),
+      () => { }
+    )
   }
 
   addUser(): void {

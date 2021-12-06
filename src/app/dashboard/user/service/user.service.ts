@@ -24,6 +24,10 @@ export class UserService {
     return EMPTY;
   }
 
+  public getUsersById(id: string): Observable<User> {
+    return this.http.get<User>(`/api/user/${id}`);
+  }
+
   public getAllUsers(): Observable<User[]> {
     return this.http
       .get<User[]>('/api/users')

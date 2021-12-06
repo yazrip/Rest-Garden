@@ -1,0 +1,68 @@
+<div class="card shadow-lg p-4 mt-4 mx-3" style="background-color: #D8E9A8; border-radius: 20px; border-style: none;">
+    <div class="row mb-5">
+        <div class="row mb-3">
+            <div class="col">
+                <h1 style="color: #1E5128;"><b>User Form</b></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-start">
+                <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+                    <div class="row mb-4">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label style="color: #1E5128;"><b>Name</b></label>
+                                <input type="text" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
+                                <!-- <div class="invalid-feedback" validation-message></div> -->
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label style="color: #1E5128;"><b>Username</b></label>
+                                <input type="password" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
+                                <!-- <div class="invalid-feedback" validation-message></div> -->
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label style="color: #1E5128;"><b>Password</b></label>
+                                <input type="password" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
+                                <!-- <div class="invalid-feedback" validation-message></div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label style="color: #1E5128;"><b>Email</b></label>
+                                <input type="text" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
+                                <!-- <div class="invalid-feedback" validation-message></div> -->
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label style="color: #1E5128;"><b>Phone Number</b></label>
+                                <input type="password" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
+                                <!-- <div class="invalid-feedback" validation-message></div> -->
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label style="color: #1E5128;"><b>Address</b></label>
+                                <input type="password" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
+                                <!-- <div class="invalid-feedback" validation-message></div> -->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary px-5 btnSignIn" style="background-color: #1E5128; border-style: none; border-radius: 20px;">
+                <b style="color: #D8E9A8;">Submit</b>
+            </button>
+        </div>
+    </div>
+</div>

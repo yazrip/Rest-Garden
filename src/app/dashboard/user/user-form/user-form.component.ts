@@ -79,7 +79,6 @@ export class UserFormComponent implements OnInit {
         phoneNumber: user.phoneNumber,
         address: user.address
       });
-
     }
   }
 

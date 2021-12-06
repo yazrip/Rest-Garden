@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY } from 'rxjs';
 import { delay, map, switchMap } from 'rxjs/operators';
@@ -14,11 +14,11 @@ import { GraveService } from '../service/grave.service';
 export class GraveFormComponent implements OnInit {
 
   graveForm: FormGroup = new FormGroup({
-    name: new FormControl(),
-    type: new FormControl(),
-    availableSlots: new FormControl(),
-    phoneNumber: new FormControl(),
-    address: new FormControl(),
+    name: new FormControl('', [Validators.required]),
+    type: new FormControl('', [Validators.required]),
+    availableSlots: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
   });
 
   setFormValues(grave: Grave): void {

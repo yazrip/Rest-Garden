@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -15,10 +15,10 @@ import { CorpseService } from '../service/corpse.service';
 export class CorpseFormComponent implements OnInit {
 
   corpseForm: FormGroup = new FormGroup({
-    name: new FormControl(),
-    location: new FormControl(),
-    date: new FormControl(),
-    parentName: new FormControl(),
+    name: new FormControl('', [Validators.required]),
+    location: new FormControl('', [Validators.required]),
+    date: new FormControl('', [Validators.required]),
+    parentName: new FormControl('', [Validators.required]),
   });
 
   setFormValues(corpse: Corpse): void {

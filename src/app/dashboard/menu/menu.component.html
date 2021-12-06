@@ -1,5 +1,5 @@
-<div class="container mt-4 shadow-lg p-1" style="border-radius: 20px">
-    <div class="row">
+<div class="container shadow-lg mt-4 p-1" style="border-radius: 20px; background-color: #D8E9A8;">
+    <div class="row mt-4">
         <div class="col d-flex justify-content-center">
             <h1 style="font-size: 70px;">Management</h1>
         </div>
@@ -9,7 +9,7 @@
             <hr style="width: 600px; height: 2px;">
         </div>
     </div>
-    <div class="row mt-5 d-flex justify-content-center">
+    <div class="row mt-4 d-flex justify-content-center">
         <div class="col-3 d-flex justify-content-center">
             <button class="shadow btnMenu p-4" [routerLink]="['/dashboard/corpse']">Corpse</button>
         </div>
@@ -17,7 +17,7 @@
             <button class="shadow btnMenu p-4" [routerLink]="['/dashboard/grave']">Grave</button>
         </div>
     </div>
-    <div class="row mt-4 d-flex justify-content-center">
+    <div class="row mt-5 d-flex justify-content-center">
         <div class="col-3 d-flex justify-content-center">
             <button class="shadow btnMenu p-4" [routerLink]="['/dashboard/transaction']">Transaction</button>
         </div>
@@ -28,7 +28,7 @@
             <button class="shadow btnMenu p-4" [routerLink]="['/dashboard/user']">User</button>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row mt-1">
         <div class="col-12 d-flex justify-content-center">
             <button class="fs-4 shadow mt-5 btn-danger btnSignOut" (click)="ngOnSignOut()" [routerLink]="['/']"><i class="fas fa-sign-out-alt d-flex justify-content-center"></i></button>
         </div>
@@ -44,3 +44,14 @@
 
 
 
+<!-- <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+        <ul class="list-group">
+            <li class="list-group-item"><button class="shadow btnMenu p-2" [routerLink]="['/dashboard/corpse']">Corpse</button></li>
+            <li class="list-group-item"><button class="shadow btnMenu p-2" [routerLink]="['/dashboard/grave']">Grave</button></li>
+            <li class="list-group-item"><button class="shadow btnMenu p-2" [routerLink]="['/dashboard/transaction']">Transaction</button></li>
+            <li class="list-group-item"><button class="shadow btnMenu p-2" [routerLink]="['/dashboard/reservation']">Reservation</button></li>
+            <li class="list-group-item"><button class="shadow btnMenu p-2" [routerLink]="['/dashboard/user']">User</button></li>
+        </ul>
+    </div> 
+</div> -->

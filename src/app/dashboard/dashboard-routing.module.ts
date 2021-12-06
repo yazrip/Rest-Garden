@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'transaction', loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule) },
   { path: 'reservation', loadChildren: () => import('./reservation/reservation.module').then(m => m.ReservationModule) },
   { path: 'corpse', loadChildren: () => import('./corpse/corpse.module').then(m => m.CorpseModule) }];
+  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

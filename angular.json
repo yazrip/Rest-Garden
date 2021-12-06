@@ -80,7 +80,8 @@
               "browserTarget": "rest-garden:build:production"
             },
             "development": {
-              "browserTarget": "rest-garden:build:development"
+              "browserTarget": "rest-garden:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

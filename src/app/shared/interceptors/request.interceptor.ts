@@ -16,7 +16,7 @@ export class RequestInterceptor implements HttpInterceptor {
   constructor(private readonly router:Router) {}
   private handleError(error:HttpErrorResponse): Observable<any>{
 
-    if (error.status === 401 || error.status === 403) {
+    if (error.status === 401 || error.status === 403 || error.status === 500) {
       alert(`Terjadi Error ${error.status} ${error.statusText}`);
       this.router.navigateByUrl('/logout')
     }

@@ -11,7 +11,7 @@ import { AuthService } from './service/auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, Validation {
   data!: Login;
 
   authForm: FormGroup = new FormGroup({
@@ -30,7 +30,7 @@ export class AuthComponent implements OnInit {
         sessionStorage.removeItem('token')
         this.router.navigateByUrl('/auth')
       }
-      else if (sessionStorage.getItem('token') && action == 'login') {
+      else if (sessionStorage.getItem('token') && action == 'auth') {
         this.router.navigateByUrl('/')
       }
     })
@@ -74,28 +74,28 @@ export class AuthComponent implements OnInit {
     return classes
   }
 
-  // displayErrors(fieldName:string):string {
-  //   const control: AbstractControl = this.authForm.get(fieldName) as AbstractControl;
-  //   const messages: any = {
-  //     "required":"Field must be filled"
-  //   }
+  displayErrors(fieldName:string):string {
+    const control: AbstractControl = this.authForm.get(fieldName) as AbstractControl;
+    const messages: any = {
+      "required":"Field must be filled"
+    }
 
-  //   if (control && control.errors) {
-  //     const error = Object.values(control.errors).pop();
-  //     const key: string = Object.keys(control.errors).pop() as string;
+    if (control && control.errors) {
+      const error = Object.values(control.errors).pop();
+      const key: string = Object.keys(control.errors).pop() as string;
 
-  //     let message = messages[key];
+      let message = messages[key];
 
-  //     console.log(message);
+      console.log(message);
 
-  //     if (key === 'minlength') {
-  //       console.log(error);
+      if (key === 'minlength') {
+        console.log(error);
 
-  //       message = message.replace('{minlength}', error.requiredLength)
-  //     }
-  //     return message;
-  //   }else{
-  //     return '';
-  //   }
-  // }
+        message = message.replace('{minlength}', error.requiredLength)
+      }
+      return message;
+    }else{
+      return '';
+    }
+  }
 }

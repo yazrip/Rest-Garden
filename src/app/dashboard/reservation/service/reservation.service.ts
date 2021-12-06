@@ -27,7 +27,7 @@ export class ReservationService {
 
   public getAll(): Observable<Reservation[]> {
     return this.http
-      .get<Reservation[]>('http://10.10.50.35:8094/reservations')
+      .get<Reservation[]>('api/reservations')
       .pipe(catchError((error) => this.handleError(error)));
   }
 

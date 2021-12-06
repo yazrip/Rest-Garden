@@ -9,14 +9,15 @@
     <div class="row mb-5">
       <div class="col d-flex justify-content-center">
         <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
-          <div class="mb-3 form-group">
+          <div class="mb-3 form-group has-validation">
             <label>Username</label>
             <input type="text" class="form-control is-valid usernameField" formControlName="username" [ngClass]="isFieldValid('username')">
+            <div class="invalid-feedback" validation-message [control]="authForm.controls['username']" [label]="'Username'"></div>
           </div>
-          <div class="mb-5 form-group">
+          <div class="mb-5 form-group has-validation">
             <label>Password</label>
             <input type="password" class="form-control is-valid passwordField" formControlName="password" [ngClass]="isFieldValid('password')">
-            <!-- <div class="invalid-feedback" validation-message></div> -->
+            <div class="invalid-feedback" validation-message [control]="authForm.controls['password']" [label]="'Password'"></div>
           </div>
           <div class="row">
             <div class="col d-flex justify-content-center">

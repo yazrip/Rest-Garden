@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col d-flex justify-content-start">
-                <form [formGroup]="userForm">
+                <form [formGroup]="userForm" (ngSubmit)="addUser()">
                     <div class="row mb-4">
                         <div class="col-4">
                             <div class="form-group">

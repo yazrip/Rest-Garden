@@ -38,15 +38,15 @@ export class AuthComponent implements OnInit {
 
   onSubmit() {
     console.log('Login value : ', this.authForm.value);
-    // if (this.authForm.valid) {
-    //   this.authService
-    //   .signin(this.authForm.value)
-    //   .subscribe((response:any) => {
-    //     sessionStorage.setItem('token', response.token),
-    //     sessionStorage.setItem('username', this.authForm.get('username')?.value)
-    //   }, console.error)
+    if (this.authForm.valid) {
+      this.authService
+      .signin(this.authForm.value)
+      .subscribe((response:any) => {
+        sessionStorage.setItem('token', response.token),
+        sessionStorage.setItem('username', this.authForm.get('username')?.value)
+      }, console.error)
       this.router.navigateByUrl('/dashboard')
-  // }
+    }
   }
 
   isValid(): boolean {
@@ -74,29 +74,28 @@ export class AuthComponent implements OnInit {
     return classes
   }
 
-  displayErrors(fieldName:string):string {
-    const control: AbstractControl = this.authForm.get(fieldName) as AbstractControl;
-    const messages: any = {
-      "required":"Field Harus di isi",
-      "minlength":"Field Minimal harus lebih panjang dari {minlength}",
-    }
+  // displayErrors(fieldName:string):string {
+  //   const control: AbstractControl = this.authForm.get(fieldName) as AbstractControl;
+  //   const messages: any = {
+  //     "required":"Field must be filled"
+  //   }
 
-    if (control && control.errors) {
-      const error = Object.values(control.errors).pop();
-      const key: string = Object.keys(control.errors).pop() as string;
+  //   if (control && control.errors) {
+  //     const error = Object.values(control.errors).pop();
+  //     const key: string = Object.keys(control.errors).pop() as string;
 
-      let message = messages[key];
+  //     let message = messages[key];
 
-      console.log(message);
+  //     console.log(message);
 
-      if (key === 'minlength') {
-        console.log(error);
+  //     if (key === 'minlength') {
+  //       console.log(error);
 
-        message = message.replace('{minlength}', error.requiredLength)
-      }
-      return message;
-    }else{
-      return '';
-    }
-  }
+  //       message = message.replace('{minlength}', error.requiredLength)
+  //     }
+  //     return message;
+  //   }else{
+  //     return '';
+  //   }
+  // }
 }

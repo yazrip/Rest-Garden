@@ -6,7 +6,6 @@ import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { MenuModule } from './menu/menu.module';
-import { CorpseModule } from './corpse/corpse.module';
 import { GraveModule } from './grave/grave.module';
 import { MenuComponent } from './menu/menu.component';
 

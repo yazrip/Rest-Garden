@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col d-flex justify-content-start">
-                <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="userForm" (click)="addUser()">
                     <div class="row mb-4">
                         <div class="col-4">
                             <div class="form-group">
@@ -19,7 +19,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label style="color: #1E5128;"><b>Username</b></label>
-                                <input type="password" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
+                                <input type="text" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
                                 <!-- <div class="invalid-feedback" validation-message></div> -->
                             </div>
                         </div>
@@ -35,21 +35,21 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label style="color: #1E5128;"><b>Email</b></label>
-                                <input type="text" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
+                                <input type="email" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
                                 <!-- <div class="invalid-feedback" validation-message></div> -->
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label style="color: #1E5128;"><b>Phone Number</b></label>
-                                <input type="password" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
+                                <input type="number" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
                                 <!-- <div class="invalid-feedback" validation-message></div> -->
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label style="color: #1E5128;"><b>Address</b></label>
-                                <input type="password" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
+                                <input type="text" class="form-control" style="border-style: none; border-radius: 10px; background-color: #1E5128; color: white;">
                                 <!-- <div class="invalid-feedback" validation-message></div> -->
                             </div>
                         </div>

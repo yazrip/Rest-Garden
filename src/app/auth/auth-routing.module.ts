@@ -8,10 +8,6 @@ const routes: Routes = [
     component: AuthComponent
   },
   {
-    path: 'login',
-    component: AuthComponent,
-  },
-  {
     path: ':action',
     component: AuthComponent,
   }

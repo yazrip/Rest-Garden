@@ -1,7 +1,7 @@
-<div class="card shadow-lg mt-4 mx-3 p-4" style="background-color: #D8E9A8; border-radius: 20px; border-style: none;">
-    <h1 class="mb-5" style="color: #1E5128;"><b>User List</b></h1>
+<div class="card shadow-lg mt-4 mx-3 p-4" style="background-color: #1E5128; border-radius: 20px; border-style: none;">
+    <h1 class="mb-5" style="color: #D8E9A8;"><b>User List</b></h1>
     <div class="table-responsive">
-        <table class="table table-responsive" style="color: #1E5128;">
+        <table class="table table-responsive" style="color: #D8E9A8 ;">
             <thead class="thead-dark">
                 <tr class="text-center">
                     <th scope="col">Id</th>
@@ -29,11 +29,12 @@
                               class="btn btn-warning m-1"
                               routerLink="{{ user.id }}">
                               <i class="bi bi-box-arrow-right"></i>
-                              Edit</button>
+                              <i class="fas fa-edit"></i></button>
                               <button 
                               type="button" 
-                              class="btn btn-warning m-1"
-                              (click)="onDeleteUser(user.id)">Delete</button>
+                              class="btn btn-danger m-1"
+                              (click)="onDeleteUser(user.id)">
+                              <i class="fas fa-trash"></i></button>
                            </div>
                             </td>    
 

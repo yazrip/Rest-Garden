@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ValidationMessageComponent } from './validation-message/validation-message.component';
 
 
 
 @NgModule({
   declarations: [
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    ValidationMessageComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   ],
   exports: [
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    ValidationMessageComponent
   ]
 })
 export class SharedModule { }

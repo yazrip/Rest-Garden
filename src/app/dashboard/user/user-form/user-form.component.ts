@@ -14,8 +14,6 @@ import { UserService } from '../service/user.service';
 })
 export class UserFormComponent implements OnInit {
 
-  data!: Login;
-
   userForm: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),
     username: new FormControl(null, [Validators.required]),
@@ -25,6 +23,8 @@ export class UserFormComponent implements OnInit {
     address: new FormControl(null, [Validators.required])
   })
   storage: Storage = sessionStorage;
+
+  id?: String
 
   user?: User;
 
@@ -54,8 +54,24 @@ export class UserFormComponent implements OnInit {
         console.error(error)
       },
       )
-    
   }
+
+  setFormValue(user: User){
+    if (user) {
+      this.userForm.addControl('id', new FormControl())
+      this.userForm.setValue({
+        id: this.id,
+        name: user.name,
+        username: user.username,
+        password: user.password,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        address: user.address
+      });
+
+    }
+  }
+
   onReset() {
     this.user = undefined;
     this.userForm.reset();

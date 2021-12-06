@@ -38,7 +38,7 @@ export class UserService {
     if (user.id) {
       return this.http.put<User>('/api/user', user);
     } else {
-      return this.http.post<any>('/api/user', user);
+      return this.http.post<any>('/api/register', user);
     }
   };
 

@@ -6,6 +6,7 @@ import { CorpseComponent } from './corpse.component';
 import { CorpseListComponent } from './corpse-list/corpse-list.component';
 import { CorpseFormComponent } from './corpse-form/corpse-form.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     CorpseRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class CorpseModule { }

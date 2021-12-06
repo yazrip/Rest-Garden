@@ -17,15 +17,15 @@ export class GraveListComponent implements OnInit {
   constructor(private readonly graveService: GraveService) { }
 
   ngOnInit(): void {
-    this.getAll()
+    this.getAllGrave()
     this.graveService.listUpdated().subscribe((updated: boolean) => {
       if (updated) {
-        this.getAll();
+        this.getAllGrave();
       }
     });
   }
   
-  getAll(){
+  getAllGrave(){
     this.subscriber = {
       next: (data: any) => {this.graves = data, console.log(data)},
       error: console.error,

@@ -1,5 +1,5 @@
 <div class="container mt-3">
-    <form class="container form-green" style="border-radius: 20px;">
+    <form class="container form-green" style="border-radius: 20px;" [formGroup]="corpseForm">
       <div class="row pt-4">
         <div class="col">
           <h1 style="color: white; font-size: 50px;">Form</h1>
@@ -22,7 +22,7 @@
             <input type="number" 
             class="form-control" 
             id="exampleInputSlot"
-            formControlName="slot"
+            formControlName="date"
             
             >
           </div>
@@ -34,7 +34,7 @@
           <input type="number" 
           class="form-control" 
           id="exampleInputPhone"
-          formControlName="phone"
+          formControlName="location"
           >
         </div>
         <div class="mb-3">
@@ -42,12 +42,12 @@
           <input type="text" 
           class="form-control" 
           id="exampleInputType"
-          formControlName="type"
+          formControlName="parentName"
           >
         </div>
         <div class="row pb-4">
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #1E5128; color: white;">Submit</button>
+            <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #1E5128; color: white;" (click)="addCorpse()">Submit</button>
           </div>
         </div>
       

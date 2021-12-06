@@ -73,7 +73,7 @@ export class GraveFormComponent implements OnInit {
       .pipe()
       .subscribe((grave: Grave)=> {
         this.onReset()
-        this.router.navigateByUrl("/graves")
+        this.router.navigateByUrl("/dashboard/grave")
       },
       (error : any) => {
         console.error(error)

@@ -74,7 +74,7 @@ export class UserFormComponent implements OnInit {
       .pipe()
       .subscribe((user: User) => {
         this.onReset()
-        this.router.navigateByUrl("/user")
+        this.router.navigateByUrl("/dashboard/user")
       },
       (error : any) => {
         console.error(error)

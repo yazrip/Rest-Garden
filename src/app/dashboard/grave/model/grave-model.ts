@@ -4,5 +4,7 @@ export interface Grave {
     type: string,
     availableSlots: number,
     phoneNumber: string,
-    address: string
+    price: number,
+    address: string,
+    description: string
 }

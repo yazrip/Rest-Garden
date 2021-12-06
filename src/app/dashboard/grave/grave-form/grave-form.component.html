@@ -19,16 +19,15 @@
         <div class="col-6" >
           <div class="mb-3" >
             <label for="exampleInputSlot" class="form-label" >Type</label>
-            <select id="exampleInputSlot" class="form-select">
-              <option selected>Public</option>
-              <option>Private</option>
+            <select id="exampleInputSlot" class="form-select" formControlName="type">
+              <option selected value="Public">Public</option>
+              <option value="Private">Private</option>
             </select>
           </div>
         </div>
       </div>
-    
       <div class="mb-3">
-          <label for="exampleInputPhone" class="form-label" style="color: white;">Available Slots</label>
+          <label for="exampleInputAvailableSlots" class="form-label" style="color: white;">Available Slots</label>
           <input type="number" 
           class="form-control" 
           id="exampleInputPhone"
@@ -36,19 +35,35 @@
           >
         </div>
         <div class="mb-3">
-          <label for="exampleInputType" class="form-label" style="color: white;">Phone Number</label>
-          <input type="number" 
+          <label for="exampleInputPhoneNumber" class="form-label" style="color: white;">Phone Number</label>
+          <input type="text" 
           class="form-control" 
-          id="exampleInputType"
+          id="exampleInputPhoneNumber"
           formControlName="phoneNumber"
           >
         </div>
         <div class="mb-3">
-          <label for="exampleInputType" class="form-label" style="color: white;">Address</label>
+          <label for="exampleInputPrice" class="form-label" style="color: white;">Price</label>
           <input type="text" 
           class="form-control" 
-          id="exampleInputType"
+          id="exampleInputPrice"
+          formControlName="price"
+          >
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputAddress" class="form-label" style="color: white;">Address</label>
+          <input type="text" 
+          class="form-control" 
+          id="exampleInputAddress"
           formControlName="address"
+          >
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputDescription" class="form-label" style="color: white;">Description</label>
+          <input type="text" 
+          class="form-control" 
+          id="exampleInputDescription"
+          formControlName="description"
           >
         </div>
         <div class="row pb-4">

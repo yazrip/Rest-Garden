@@ -23,7 +23,18 @@ export class UserFormComponent implements OnInit {
     email: new FormControl(null, [Validators.required]),
     phoneNumber: new FormControl(null, [Validators.required]),
     address: new FormControl(null, [Validators.required])
-  })
+  });
+
+  setFormValues(user: User): void {
+    this.userForm.addControl('id', new FormControl);
+    this.userForm.get('id')?.setValue(user.id);
+    this.userForm.get('name')?.setValue(user.name);
+    this.userForm.get('username')?.setValue(user.username);
+    this.userForm.get('password')?.setValue(user.password);
+    this.userForm.get('email')?.setValue(user.email);
+    this.userForm.get('phoneNumber')?.setValue(user.phoneNumber);
+  }
+
   storage: Storage = sessionStorage;
 
   user?: User;

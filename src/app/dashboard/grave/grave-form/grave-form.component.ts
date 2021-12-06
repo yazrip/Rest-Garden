@@ -15,10 +15,12 @@ export class GraveFormComponent implements OnInit {
 
   graveForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    type: new FormControl('', [Validators.required]),
+    type: new FormControl([Validators.required]),
     availableSlots: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
   });
 
   id: string | null = null;
@@ -30,7 +32,9 @@ export class GraveFormComponent implements OnInit {
     this.graveForm.get('type')?.setValue(grave.type);
     this.graveForm.get('availableSlots')?.setValue(grave.availableSlots);
     this.graveForm.get('phoneNumber')?.setValue(grave.phoneNumber);
+    this.graveForm.get('price')?.setValue(grave.price);
     this.graveForm.get('address')?.setValue(grave.address);
+    this.graveForm.get('description')?.setValue(grave.description);
   }
 
   grave?: Grave;
@@ -43,21 +47,21 @@ export class GraveFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(
-        map((params: any) => params.id),
-        switchMap((id: string) => {
-          if (!id) return EMPTY;
-          else { this.id = id; return this.graveService.getGravesById(id)}
-        })
-      )
-      .subscribe(
-        (grave: Grave) => {if (grave) {
+    this.activatedRoute.params.pipe(
+      map((params: any) => params.id),
+      switchMap((id: string) => {
+        if (!id) { return EMPTY }
+        else { this.id = id; return this.graveService.getGravesById(id) }
+      })
+    ).subscribe(
+      (grave: Grave) => {
+        if (grave) {
           this.setFormValues(grave);
-        } else {
-          this.onReset();
-        }},
-      );
+        }
+      },
+      (error) => console.error(error),
+      () => { }
+    )
   }
 
   addGrave(): void {

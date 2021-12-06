@@ -42,7 +42,7 @@ export class GraveService {
     if (grave.id) {
       return this.http.put<Grave>('/api/grave', grave);
     } else {
-      return this.http.post<any>('/api/grave', grave);
+      return this.http.post<Grave>('/api/grave', grave);
     }
   
   };

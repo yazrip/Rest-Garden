@@ -18,7 +18,8 @@ export class GraveListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllGrave()
-    this.graveService.listUpdated().subscribe((updated: boolean) => {
+    this.graveService.listUpdated()
+      .subscribe((updated: boolean) => {
       if (updated) {
         this.getAllGrave();
       }

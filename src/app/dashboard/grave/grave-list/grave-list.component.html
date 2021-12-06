@@ -13,7 +13,9 @@
           <th scope="col">Type</th>
           <th scope="col">Available Slots</th>
           <th scope="col">Phone Number</th>
+          <th scope="col">Price</th>
           <th scope="col">Address</th>
+          <th scope="col">Description</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -25,13 +27,15 @@
             <td scope="row"> {{ grave.type }} </td>
             <td scope="row"> {{ grave.availableSlots }} </td>
             <td scope="row"> {{ grave.phoneNumber }} </td>
+            <td scope="row"> {{ grave.price }} </td>
             <td scope="row"> {{ grave.address }} </td>
+            <td scope="row"> {{ grave.description }} </td>
             <td> 
               <div>
                 <button 
                 type="button" 
                 class="btn btn-warning m-1"
-                routerLink="/grave/{{grave.id}}">
+                routerLink="grave/{{ grave.id }}">
                 <i class="bi bi-box-arrow-right"></i>
                 Edit</button>
                 <button 

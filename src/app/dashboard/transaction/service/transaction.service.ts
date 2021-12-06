@@ -27,7 +27,7 @@ export class TransactionService {
 
   public getAll(): Observable<Transaction[]> {
     return this.http
-      .get<Transaction[]>('http://10.10.50.35:8094/transactions')
+      .get<Transaction[]>('/api/transactions')
       .pipe(catchError((error) => this.handleError(error)));
   }
 

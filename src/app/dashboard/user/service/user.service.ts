@@ -2,31 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Corpse } from '../model/corpse-model';
+import { User } from '../model/user-model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CorpseService {
+export class UserService {
 
   readonly storage: Storage = sessionStorage;
   subject: Subject<boolean> = new Subject<boolean>();
 
   token: string = sessionStorage.getItem('token') as string;
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 
   private handleError(error: any): Observable<any> {
     console.error(error);
 
-    alert(`Terjadi Kesalahan ${error}`);
+    alert(`Terjadi kesalahan ${error}`);
 
     return EMPTY;
   }
 
-  public getAllCorpse(): Observable<Corpse[]> {
+  public getAllUsers(): Observable<User[]> {
     return this.http
-      .get<Corpse[]>('/api/corpses')
+      .get<User[]>('/api/users')
       .pipe(catchError((error) => this.handleError(error)));
   }
 
@@ -34,11 +34,16 @@ export class CorpseService {
     return this.subject.asObservable();
   }
 
-  public addCorpse(corpse: Corpse): Observable<Corpse> {
-    if (corpse.id) {
-      return this.http.put<Corpse>('/api/corpse', corpse);
+  public addUser(user: User): Observable<User> {
+    if (user.id) {
+      return this.http.put<User>('/api/user', user);
     } else {
-      return this.http.post<any>('/api/corpse', corpse);
+      return this.http.post<any>('/api/user', user);
     }
   };
+
+  public deleteUser(id: string): Observable<void> {
+    return this.http.delete<void>(`/api/user/${id}`)
+  }
+
 }

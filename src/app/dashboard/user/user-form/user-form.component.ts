@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Login } from 'src/app/auth/model/login-model';
 import { AuthService } from 'src/app/auth/service/auth.service';
+import { User } from '../model/user-model';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-user-form',
@@ -14,28 +16,57 @@ export class UserFormComponent implements OnInit {
 
   data!: Login;
 
-  authForm: FormGroup = new FormGroup({
+  userForm: FormGroup = new FormGroup({
+    name: new FormControl(null, [Validators.required]),
     username: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required])
+    password: new FormControl(null, [Validators.required]),
+    email: new FormControl(null, [Validators.required]),
+    phoneNumber: new FormControl(null, [Validators.required]),
+    address: new FormControl(null, [Validators.required])
   })
   storage: Storage = sessionStorage;
 
-  constructor(private readonly authService:AuthService, private readonly router:Router, private readonly activatedRoute:ActivatedRoute) { }
+  user?: User;
+
+  constructor(
+    private readonly userService: UserService, 
+    private readonly router:Router, 
+    private readonly activatedRoute:ActivatedRoute
+    
+    ) { }
 
   ngOnInit(): void {
     
   }
 
-  onSubmit() {
+  addUser(): void {
+    const user: User = this.userForm.value;
+    console.log('user form value:', user);
+
+    this.userService
+      .addUser(user)
+      .pipe()
+      .subscribe((user: User) => {
+        this.onReset()
+        this.router.navigateByUrl("/user")
+      },
+      (error : any) => {
+        console.error(error)
+      },
+      )
     
+  }
+  onReset() {
+    this.user = undefined;
+    this.userForm.reset();
   }
 
   isValid(): boolean {
-    return !this.authForm.get('username')?.value;
+    return !this.userForm.get('username')?.value;
   }
 
   isFieldValid(fieldName: string): { [key: string]: boolean } {
-    const control: AbstractControl = this.authForm.get(fieldName) as AbstractControl;
+    const control: AbstractControl = this.userForm.get(fieldName) as AbstractControl;
 
     const classes = {
       'is-invalid': false,
@@ -56,7 +87,7 @@ export class UserFormComponent implements OnInit {
   }
 
   displayErrors(fieldName:string):string {
-    const control: AbstractControl = this.authForm.get(fieldName) as AbstractControl;
+    const control: AbstractControl = this.userForm.get(fieldName) as AbstractControl;
     const messages: any = {
       "required":"Field Harus di isi",
       "minlength":"Field Minimal harus lebih panjang dari {minlength}",

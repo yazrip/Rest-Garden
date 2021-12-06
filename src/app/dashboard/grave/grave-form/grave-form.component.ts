@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY } from 'rxjs';
 import { delay, map, switchMap } from 'rxjs/operators';
@@ -20,6 +20,8 @@ export class GraveFormComponent implements OnInit {
     phoneNumber: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
   });
+
+  id: string | null = null;
 
   setFormValues(grave: Grave): void {
     this.graveForm.addControl('id', new FormControl);
@@ -43,10 +45,10 @@ export class GraveFormComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params
       .pipe(
-        map((params) => params.id),
+        map((params: any) => params.id),
         switchMap((id: string) => {
           if (!id) return EMPTY;
-          else return this.graveService.getGravesById(id);
+          else { this.id = id; return this.graveService.getGravesById(id)}
         })
       )
       .subscribe(
@@ -74,6 +76,22 @@ export class GraveFormComponent implements OnInit {
       },
       )
     
+  }
+
+  isValid(): boolean {
+    return !this.graveForm.get('usermame')!.value;
+  }
+
+  isFielValid(fieldName: string): string {
+    const control: AbstractControl = this.graveForm.get(fieldName) as AbstractControl;
+    
+    if (control && control.touched && control.invalid) {
+      return 'is-invalid';
+    } else if (control && control.invalid) {
+      return 'is-valid'
+    } else {
+      return '';
+    }
   }
 
   onReset(): void {

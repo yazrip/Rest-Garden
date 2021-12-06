@@ -32,7 +32,7 @@ export class GraveListComponent implements OnInit {
       complete: () => {},
     };
 
-    this.graveService.getAllGraves().pipe(delay(500)).subscribe(this.subscriber)
+    this.graveService.getAllGraves().pipe().subscribe(this.subscriber)
   }
 
   onDeleteGrave(id: string): void {
@@ -49,7 +49,6 @@ export class GraveListComponent implements OnInit {
 
     this.graveService.deleteGrave(id)
       .pipe(
-        delay(1500),
         switchMap(() => this.graveService.getAllGraves())
       )
       .subscribe(this.subscriber);

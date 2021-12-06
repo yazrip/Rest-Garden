@@ -26,7 +26,7 @@ export class GraveService {
 
   public getAllGraves(): Observable<Grave[]> {
     return this.http
-      .get<Grave[]>('http://10.10.50.35:8094/graves')
+      .get<Grave[]>('/api/graves')
       .pipe(catchError((error) => this.handleError(error)));
   }
 
@@ -35,19 +35,19 @@ export class GraveService {
   }
 
   public getGravesById(id: string): Observable<Grave> {
-    return this.http.get<Grave>(`http://10.10.50.35:8094/grave/${id}`);
+    return this.http.get<Grave>(`/api/grave/${id}`);
   }
 
   public createGrave(grave: Grave): Observable<Grave> {
     if (grave.id) {
-      return this.http.put<Grave>('http://10.10.50.35:8094/grave', grave);
+      return this.http.put<Grave>('/api/grave', grave);
     } else {
-      return this.http.post<any>('http://10.10.50.35:8094/grave', grave);
+      return this.http.post<any>('/api/grave', grave);
     }
   
   };
 
   public deleteGrave(id: string): Observable<void> {
-    return this.http.delete<void>(`http://10.10.50.35:8094/grave/${id}`)
+    return this.http.delete<void>(`/api/grave/${id}`)
   }
 }

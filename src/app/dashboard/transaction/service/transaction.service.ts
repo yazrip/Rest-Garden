@@ -27,7 +27,7 @@ export class TransactionService {
 
   public getAll(): Observable<Transaction[]> {
     return this.http
-      .get<Transaction[]>('api/transactions')
+      .get<Transaction[]>('/api/transactions')
       .pipe(catchError((error) => this.handleError(error)));
   }
 

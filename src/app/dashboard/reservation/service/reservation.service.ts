@@ -27,7 +27,7 @@ export class ReservationService {
 
   public getAll(): Observable<Reservation[]> {
     return this.http
-      .get<Reservation[]>('api/reservations')
+      .get<Reservation[]>('/api/reservations')
       .pipe(catchError((error) => this.handleError(error)));
   }
 

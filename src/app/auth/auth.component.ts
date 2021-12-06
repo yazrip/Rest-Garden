@@ -31,7 +31,7 @@ export class AuthComponent implements OnInit, Validation {
         this.router.navigateByUrl('/auth')
       }
       else if (sessionStorage.getItem('token') && action == 'auth') {
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/auth')
       }
     })
   }

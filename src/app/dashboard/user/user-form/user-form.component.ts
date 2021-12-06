@@ -38,8 +38,6 @@ export class UserFormComponent implements OnInit {
 
   storage: Storage = sessionStorage;
 
-  id?: String
-
   user?: User;
 
   constructor(

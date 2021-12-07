@@ -16,12 +16,12 @@ import { UserService } from '../service/user.service';
 export class UserFormComponent implements OnInit {
 
   userForm: FormGroup = new FormGroup({
-    name: new FormControl(null, [Validators.required]),
-    username: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required]),
-    phoneNumber: new FormControl(null, [Validators.required]),
-    address: new FormControl(null, [Validators.required])
+    name: new FormControl('', [Validators.required]),
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required])
   });
   
   id: string | null = null;
@@ -74,7 +74,7 @@ export class UserFormComponent implements OnInit {
       .pipe()
       .subscribe((user: User) => {
         this.onReset()
-        this.router.navigateByUrl("/user")
+        this.router.navigateByUrl("/dashboard/user")
       },
       (error : any) => {
         console.error(error)

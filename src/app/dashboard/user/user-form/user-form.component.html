@@ -1,68 +1,72 @@
-<div class="card shadow-lg p-4 mt-4 mx-3" style="background-color: #1E5128; border-radius: 20px; border-style: none;">
-    <div class="row mb-5">
-        <div class="row mb-3">
-            <div class="col">
-                <h1 style="color: #D8E9A8;"><b>User Form</b></h1>
-            </div>
+<form class="card shadow-lg mt-4 p-4 mx-3" style="border-radius: 20px; background-color: #1E5128;" [formGroup] = "userForm">
+    <div class="row mb-4">
+      <div class="col">
+        <h1 style="color: #D8E9A8; font-size: 50px;">User Form</h1>
+      </div>
+      </div>
+      <div class="row pt-2" style="color: #D8E9A8;">
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="exampleInputName" class="form-label"><b>Name</b></label>
+          <input type="text" 
+          class="form-control" 
+          id="exampleInputName" 
+          formControlName="name"
+          style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;" 
+          >
         </div>
-        <div class="row">
-            <div class="col d-flex justify-content-start">
-                <form [formGroup]="userForm">
-                    <div class="row mb-4">
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="exampleInputName" class="form-label" style="color: #D8E9A8;"><b>Name</b></label>
-                                <input type="text" class="form-control" id="exampleInputName" formControlName="name" style="border-style: none; border-radius: 10px; background-color: #D8E9A8; color: #1E5128;">
-                                <!-- <div class="invalid-feedback" validation-message></div> -->
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="exampleInputUsername" class="form-label" style="color: #D8E9A8;"><b>Username</b></label>
-                                <input type="text" class="form-control" id="exampleInputUsername" formControlName="username" style="border-style: none; border-radius: 10px; background-color: #D8E9A8; color: #1E5128;">
-                                <!-- <div class="invalid-feedback" validation-message></div> -->
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="exampleInputPassword" class="form-label" style="color: #D8E9A8;"><b>Password</b></label>
-                                <input type="password" class="form-control" id="exampleInputPassword" formControlName="password" style="border-style: none; border-radius: 10px; background-color: #D8E9A8; color: #1E5128;">
-                                <!-- <div class="invalid-feedback" validation-message></div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail" class="form-label" style="color: #D8E9A8;"><b>Email</b></label>
-                                <input type="email" class="form-control" id="exampleInputEmail" formControlName="email" style="border-style: none; border-radius: 10px; background-color: #D8E9A8; color: #1E5128;">
-                                <!-- <div class="invalid-feedback" validation-message></div> -->
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="exampleInputPhoneNumber" class="form-label" style="color: #D8E9A8;"><b>Phone Number</b></label>
-                                <input type="number" class="form-control" id="exampleInputPhoneNumber" formControlName="phoneNumber" style="border-style: none; border-radius: 10px; background-color: #D8E9A8; color: #1E5128;">
-                                <!-- <div class="invalid-feedback" validation-message></div> -->
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="exampleInputAddress" class="form-label" style="color: #D8E9A8;"><b>Address</b></label>
-                                <input type="text" class="form-control" id="exampleInputAddress" formControlName="address" style="border-style: none; border-radius: 10px; background-color: #D8E9A8; color: #1E5128;">
-                                <!-- <div class="invalid-feedback" validation-message></div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-12 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary px-5 btnSignIn" style="background-color: #4E9F3D; border-style: none; border-radius: 20px;">
-                                <b style="color: #D8E9A8;" (click)="addUser()">Submit</b>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+      </div>
+      <div class="col-6" >
+        <div class="mb-3">
+            <label for="exampleInputName" class="form-label"><b>Username</b></label>
+            <input type="text" 
+            class="form-control" 
+            id="exampleInputName" 
+            formControlName="name"
+            style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;" 
+            >
+          </div>
+      </div>
     </div>
-</div>
+    <div class="mb-3">
+        <label for="exampleInputAvailableSlots" class="form-label" style="color: #D8E9A8;"><b>Password</b></label>
+        <input type="number" 
+        class="form-control" 
+        id="exampleInputPhone"
+        formControlName="availableSlots"
+        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPhoneNumber" class="form-label" style="color: #D8E9A8;"><b>Email</b></label>
+        <input type="text" 
+        class="form-control" 
+        id="exampleInputPhoneNumber"
+        formControlName="phoneNumber"
+        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPrice" class="form-label" style="color: #D8E9A8;"><b>Phone Number</b></label>
+        <input type="text" 
+        class="form-control" 
+        id="exampleInputPrice"
+        formControlName="price"
+        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputAddress" class="form-label" style="color: #D8E9A8;"><b>Address</b></label>
+        <input type="text" 
+        class="form-control" 
+        id="exampleInputAddress"
+        formControlName="address"
+        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        >
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 d-flex justify-content-center">
+          <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: #D8E9A8;" (click)="addUser()"><b>Submit</b></button>
+        </div>
+      </div>
+  </form>

@@ -4,6 +4,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ValidationMessageComponent } from './validation-message/validation-message.component';
+import { SidebarNewComponent } from './components/sidebar-new/sidebar-new.component';
 
 
 
@@ -11,7 +12,8 @@ import { ValidationMessageComponent } from './validation-message/validation-mess
   declarations: [
     FooterComponent,
     SidebarComponent,
-    ValidationMessageComponent
+    ValidationMessageComponent,
+    SidebarNewComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { ValidationMessageComponent } from './validation-message/validation-mess
   exports: [
     FooterComponent,
     SidebarComponent,
-    ValidationMessageComponent
+    ValidationMessageComponent,
+    SidebarNewComponent
   ]
 })
 export class SharedModule { }

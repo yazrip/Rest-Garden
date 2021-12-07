@@ -1,13 +1,13 @@
-<div class="container mt-3">
-    <div class="container shadow form-green pb-4" style="border-radius: 20px;">
-      <div class="row pt-4 pb-2">
+    <div class="card shadow-lg mt-4 mx-3 p-4" style="background-color: #1E5128; border-radius: 20px; border-style: none;">
+      <div class="row mb-4 pb-2">
         <div class="col">
-          <h1 style="color: white; font-size: 50px;">Grave Data</h1>
+          <h1 style="color: #D8E9A8; font-size: 50px;">Grave Data</h1>
         </div>
       </div>
-    <table class="table table-info table-dark table-responsive">
-      <thead>
-        <tr>
+      <div class="table-responsive">
+        <table class="table table-responsive" style="color: #D8E9A8;">
+          <thead class="thead-dark">
+            <tr class="text-center">
           <th scope="col">Grave ID</th>
           <th scope="col">Name Grave</th>
           <th scope="col">Type</th>
@@ -37,11 +37,11 @@
                 class="btn btn-warning m-1"
                 routerLink="{{ grave.id }}">
                 <i class="bi bi-box-arrow-right"></i>
-                Edit</button>
+                <i class="fas fa-edit"></i></button>
                 <button 
                 type="button" 
-                class="btn btn-warning m-1"
-                (click)="onDeleteGrave(grave.id)">Delete</button>
+                class="btn btn-danger m-1"
+                (click)="onDeleteGrave(grave.id)"><i class="fas fa-trash"></i></button>
              </div>
               </td>
           </tr>

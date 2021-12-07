@@ -1,48 +1,50 @@
-<div class="container mt-3">
-    <div class="container shadow form-green pb-4" style="border-radius: 20px;">
-      <div class="row pt-4 pb-2">
+    <div class="card shadow-lg mt-4 mx-3 p-4" style="background-color: #1E5128; border-radius: 20px; border-style: none;">
+      <div class="row mb-4 pb-2">
         <div class="col">
-          <h1 style="color: white; font-size: 50px;">Corpse Data</h1>
+          <h1 style="color: #D8E9A8; font-size: 50px;">Corpse Data</h1>
         </div>
       </div>
-    <table class="table table-info table-dark table-responsive">
-      <thead>
-        <tr>
-          <th scope="col">Corpse ID</th>
-          <th scope="col">Name Corpse</th>
-          <th scope="col">Location</th>
-          <th scope="col">Date</th>
-          <th scope="col">Parent Name</th>
-          <th scope="col">Action</th>
-        </tr>
-        <ng-container *ngIf="corpses.length > 0; else kosong">
-          <tbody *ngFor="let corpse of corpses">
-            <td scope="row"> {{ corpse.id }}</td>
-            <td scope="row"> {{ corpse.name }}</td>
-            <td scope="row"> {{ corpse.location }}</td>
-            <td scope="row"> {{ corpse.date }}</td>
-            <td scope="row"> {{ corpse.parentName }}</td>
-            <td> 
-              <div>
-                <button 
-                type="button" 
-                class="btn btn-warning m-1"
-                routerLink="/grave/{{corpse.id}}">
-                <i class="bi bi-box-arrow-right"></i>
-                Edit</button>
-             </div>
-              </td>
-          </tbody>
-        </ng-container>
-        <ng-template #kosong>
-          <tbody>
-            <tr>
-                <td colspan="8" rowspan="5" class="text-center mt-2 fs-5 fw-bold">
-                    Data Kosong
-                </td>
+      <div class="table-responsive">
+        <table class="table table-responsive" style="color: #D8E9A8;">
+          <thead class="thead-dark">
+            <tr class="text-center">
+              <th scope="col">Corpse ID</th>
+              <th scope="col">Name Corpse</th>
+              <th scope="col">Location</th>
+              <th scope="col">Date</th>
+              <th scope="col">Parent Name</th>
+              <th scope="col">Action</th>
             </tr>
-        </tbody>
-        </ng-template>
-      </thead>
-    </table>
+            <ng-container *ngIf="corpses.length > 0; else kosong">
+              <tbody *ngFor="let corpse of corpses">
+                <td scope="row"> {{ corpse.id }}</td>
+                <td scope="row"> {{ corpse.name }}</td>
+                <td scope="row"> {{ corpse.location }}</td>
+                <td scope="row"> {{ corpse.date }}</td>
+                <td scope="row"> {{ corpse.parentName }}</td>
+                <td> 
+                  <div>
+                    <button 
+                    type="button" 
+                    class="btn btn-warning m-1"
+                    routerLink="/grave/{{corpse.id}}">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <i class="fas fa-edit"></i></button>
+                 </div>
+                  </td>
+              </tbody>
+            </ng-container>
+            <ng-template #kosong>
+              <tbody>
+                  <tr>
+                      <td colspan="8" rowspan="5" class="text-center mt-2 fs-5 fw-bold">
+                          Data Kosong
+                      </td>
+                  </tr>
+              </tbody>
+          </ng-template>
+          </thead>
+        </table>
+      </div>
   </div>
+

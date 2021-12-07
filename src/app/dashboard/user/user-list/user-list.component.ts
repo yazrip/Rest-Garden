@@ -18,7 +18,8 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUser()
-    this.userService.listUpdated().subscribe((updated: boolean) => {
+    this.userService.listUpdated()
+      .subscribe((updated: boolean) => {
       if (updated) {
         this.getAllUser();
       }

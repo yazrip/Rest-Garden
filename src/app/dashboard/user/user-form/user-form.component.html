@@ -18,40 +18,40 @@
       </div>
       <div class="col-6" >
         <div class="mb-3">
-            <label for="exampleInputName" class="form-label"><b>Username</b></label>
+            <label for="exampleInputUsername" class="form-label"><b>Username</b></label>
             <input type="text" 
             class="form-control" 
-            id="exampleInputName" 
-            formControlName="name"
+            id="exampleInputUsername" 
+            formControlName="username"
             style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;" 
             >
           </div>
       </div>
     </div>
     <div class="mb-3">
-        <label for="exampleInputAvailableSlots" class="form-label" style="color: #D8E9A8;"><b>Password</b></label>
-        <input type="number" 
+        <label for="exampleInputPassword" class="form-label" style="color: #D8E9A8;"><b>Password</b></label>
+        <input type="password" 
         class="form-control" 
-        id="exampleInputPhone"
-        formControlName="availableSlots"
+        id="exampleInputPassword"
+        formControlName="password"
         style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
         >
       </div>
       <div class="mb-3">
-        <label for="exampleInputPhoneNumber" class="form-label" style="color: #D8E9A8;"><b>Email</b></label>
+        <label for="exampleInputEmail" class="form-label" style="color: #D8E9A8;"><b>Email</b></label>
+        <input type="email" 
+        class="form-control" 
+        id="exampleInputEmail"
+        formControlName="email"
+        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPhoneNumber" class="form-label" style="color: #D8E9A8;"><b>Phone Number</b></label>
         <input type="text" 
         class="form-control" 
         id="exampleInputPhoneNumber"
         formControlName="phoneNumber"
-        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
-        >
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPrice" class="form-label" style="color: #D8E9A8;"><b>Phone Number</b></label>
-        <input type="text" 
-        class="form-control" 
-        id="exampleInputPrice"
-        formControlName="price"
         style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
         >
       </div>
@@ -66,7 +66,7 @@
       </div>
       <div class="row mt-3">
         <div class="col-12 d-flex justify-content-center">
-          <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: #D8E9A8;" (click)="addUser()"><b>Submit</b></button>
+          <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: #D8E9A8;" (click)="addUser()" [disabled]="userForm"><b>Submit</b></button>
         </div>
       </div>
   </form>

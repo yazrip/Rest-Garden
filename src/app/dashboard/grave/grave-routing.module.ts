@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GraveFormComponent } from './grave-form/grave-form.component';
 import { GraveComponent } from './grave.component';
 
 const routes: Routes = [

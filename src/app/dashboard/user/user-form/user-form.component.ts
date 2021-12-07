@@ -82,21 +82,6 @@ export class UserFormComponent implements OnInit {
       )
   }
 
-  setFormValue(user: User){
-    if (user) {
-      this.userForm.addControl('id', new FormControl())
-      this.userForm.setValue({
-        id: this.id,
-        name: user.name,
-        username: user.username,
-        password: user.password,
-        email: user.email,
-        phoneNumber: user.phoneNumber,
-        address: user.address
-      });
-    }
-  }
-
   onReset() {
     this.user = undefined;
     this.userForm.reset();

@@ -1,0 +1,61 @@
+<div class="sidebar" style="overflow: hidden;">
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <a href="/dashboard">
+                <button class="btn btn-primary shadow px-4 py-3" style="background-color: rgb(255, 255, 255); border-style: none; border-radius: 50%;">
+                    <img src="../../../../assets/LOGO.png" style="width: 50px;">            
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="row mt-3 d-flex">
+        <div class="col d-flex justify-content-center">
+            <button class="btn-primary" style="background-color: #4E9F3D; border-style: none; border-radius: 20px; width: 180px;">
+                <a [routerLink]="['/dashboard/corpse']" class="d-flex align-items-end justify-content-start" style="font-size: 18px; color:#191A19">
+                    <img src="./../../../../assets/icons8-sleeping-bag-100.png" style="width: 30px;" class="me-1"><b style="color: #D8E9A8;"> Corpse</b>
+                </a>
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col d-flex justify-content-center">
+            <button class="btn-primary" style="background-color: #4E9F3D; border-style: none; border-radius: 20px; width: 180px;">
+                <a [routerLink]="['/dashboard/grave']" class="d-flex align-items-end justify-content-start" style="font-size: 18px; color:#191A19">
+                    <img src="./../../../../assets/icons8-cemetery-100.png" style="width: 25px;" class="me-2"><b style="color: #D8E9A8;"> Grave</b> 
+                </a>
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col d-flex justify-content-center">
+            <button class="btn-primary" style="background-color: #4E9F3D; border-style: none; border-radius: 20px; width: 180px;">
+                <a [routerLink]="['/dashboard/transaction']" class="d-flex align-items-end justify-content-start" style="font-size: 18px; color:#191A19">
+                    <img src="./../../../../assets/icons8-transaction-96.png" style="width: 25px;" class="me-2"><b style="color: #D8E9A8;"> Transaction</b> 
+                </a>
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col d-flex justify-content-center">
+            <button class="btn-primary" style="background-color: #4E9F3D; border-style: none; border-radius: 20px; width: 180px;">
+                <a [routerLink]="['/dashboard/reservation']" class="d-flex align-items-end justify-content-start" style="font-size: 18px; color:#191A19">
+                    <img src="./../../../../assets/icons8-reserve-90.png" style="width: 25px;" class="me-2"><b style="color: #D8E9A8;"> Reservation</b> 
+                </a>
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col d-flex justify-content-center">
+            <button class="btn-primary" style="background-color: #4E9F3D; border-style: none; border-radius: 20px; width: 180px;">
+                <a [routerLink]="['/dashboard/user']" class="d-flex align-items-end justify-content-start" style="font-size: 18px; color:#191A19">
+                    <img src="./../../../../assets/icons8-user-account-96.png" style="width: 25px;" class="me-2"><b style="color: #D8E9A8;"> Users</b> 
+                </a>
+            </button>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-md-12 d-flex justify-content-center mt-2">
+            <button class="fs-4 shadow btn-danger btnSignOut" (click)="ngOnSignOut()" [routerLink]="['/']"><i class="fas fa-sign-out-alt d-flex justify-content-center"></i></button>
+        </div>
+    </div>
+</div>

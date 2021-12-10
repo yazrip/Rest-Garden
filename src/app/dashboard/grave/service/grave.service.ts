@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, Subject } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Grave } from '../model/grave-model';
 
 @Injectable({
@@ -38,11 +38,22 @@ export class GraveService {
     return this.http.get<Grave>(`/api/grave/${id}`);
   }
 
-  public createGrave(grave: Grave): Observable<Grave> {
+  public createGrave(grave: Grave): Observable<any> {
     if (grave.id) {
-      return this.http.put<Grave>('/api/grave', grave);
+      console.log(grave);
+      return this.http
+        .put<Grave>(`/api/grave`, grave)
+        .pipe(catchError((error) => this.handleError(error)),
+        map((data)=> this.subject.next(true)),
+        );
     } else {
-      return this.http.post<Grave>('/api/grave', grave);
+      console.log(grave);
+      return this.http
+        .post<Grave>(`/api/grave`, grave)
+        .pipe(
+          catchError((error) => this.handleError(error)),
+          map((data)=> this.subject.next(true)),
+        );
     }
   
   };

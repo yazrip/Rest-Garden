@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, Subject } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Corpse } from '../model/corpse-model';
 
 @Injectable({
@@ -34,11 +34,22 @@ export class CorpseService {
     return this.subject.asObservable();
   }
 
-  public addCorpse(corpse: Corpse): Observable<Corpse> {
+  public addCorpse(corpse: Corpse): Observable<any> {
     if (corpse.id) {
-      return this.http.put<Corpse>('/api/corpse', corpse);
+      console.log(corpse);
+      return this.http
+        .put<Corpse>(`/api/corpse`, corpse)
+        .pipe(catchError((error) => this.handleError(error)),
+        map((data)=> this.subject.next(true)),
+        );
     } else {
-      return this.http.post<any>('/api/corpse', corpse);
+      console.log(corpse);
+      return this.http
+        .post<Corpse>(`/api/corpse`, corpse)
+        .pipe(
+          catchError((error) => this.handleError(error)),
+          map((data)=> this.subject.next(true)),
+        );
     }
   };
 }

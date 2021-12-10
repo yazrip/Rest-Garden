@@ -28,6 +28,7 @@ export class AuthComponent implements OnInit, Validation {
     this.activatedRoute.params
     .pipe(map((params:any)=>params.action))
     .subscribe((action) => {
+      this.stopLoading()
       if (action == '') {
         sessionStorage.removeItem('token') 
         sessionStorage.removeItem('username')
@@ -48,6 +49,10 @@ export class AuthComponent implements OnInit, Validation {
     this.loadingBar.start()
   }
 
+  stopLoading() {
+    this.loadingBar.stop();
+  }
+
   onSubmit() {
     console.log('Login value : ', this.authForm.value);
     if (this.authForm.valid) {
@@ -59,8 +64,9 @@ export class AuthComponent implements OnInit, Validation {
       }, console.error)
       this.startLoading()
       setTimeout(() => {
-        this.router.navigateByUrl('/dashboard')        
+        this.router.navigateByUrl('/dashboard')
       }, 2300);
+      
     }
   }
 

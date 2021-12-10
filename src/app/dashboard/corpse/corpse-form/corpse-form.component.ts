@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EMPTY } from 'rxjs';
+import { EMPTY, Observer } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { Grave } from '../../grave/model/grave-model';
+import { GraveService } from '../../grave/service/grave.service';
 import { Corpse } from '../model/corpse-model';
 import { CorpseService } from '../service/corpse.service';
 
@@ -17,7 +19,6 @@ export class CorpseFormComponent implements OnInit {
   corpseForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     location: new FormControl('', [Validators.required]),
-    date: new FormControl('', [Validators.required]),
     parentName: new FormControl('', [Validators.required]),
   });
 
@@ -26,20 +27,31 @@ export class CorpseFormComponent implements OnInit {
     this.corpseForm.get('id')?.setValue(corpse.id);
     this.corpseForm.get('name')?.setValue(corpse.name);
     this.corpseForm.get('location')?.setValue(corpse.location);
-    this.corpseForm.get('date')?.setValue(corpse.date);
     this.corpseForm.get('parentName')?.setValue(corpse.parentName);
   }
-
+  graves: Grave[] = [];
   corpse?: Corpse;
+  subscriber?: Observer<any>
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly corpseService: CorpseService,
     private readonly router: Router,
+    private readonly graveService: GraveService
   ) { }
 
   ngOnInit(): void {
-    
+    this.getAllGrave();
+  }
+
+  getAllGrave(){
+    this.subscriber = {
+      next: (data: any) => {this.graves = data, console.log(data)},
+      error: console.error,
+      complete: () => {},
+    };
+
+    this.graveService.getAllGraves().pipe().subscribe(this.subscriber)
   }
 
   addCorpse(): void {
@@ -51,7 +63,7 @@ export class CorpseFormComponent implements OnInit {
       .pipe()
       .subscribe((corpse: Corpse)=> {
         this.onReset()
-        this.router.navigateByUrl("/corpses")
+        this.router.navigateByUrl("/corpse")
       },
       (error : any) => {
         console.error(error)

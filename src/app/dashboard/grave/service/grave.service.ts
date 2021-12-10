@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, Subject } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Grave } from '../model/grave-model';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { Grave } from '../model/grave-model';
 export class GraveService {
 
   readonly storage: Storage = sessionStorage;
-  subject: Subject<boolean> = new Subject<boolean>();
+  private GraveSubject: Subject<boolean> = new Subject<boolean>();
 
   token: string = sessionStorage.getItem('token') as string;
 
@@ -31,7 +31,7 @@ export class GraveService {
   }
 
   public listUpdated(): Observable<boolean> {
-    return this.subject.asObservable();
+    return this.GraveSubject.asObservable();
   }
 
   public getGravesById(id: string): Observable<Grave> {
@@ -49,5 +49,8 @@ export class GraveService {
 
   public deleteGrave(id: string): Observable<void> {
     return this.http.delete<void>(`/api/grave/${id}`)
+    .pipe(
+      map(() => this.GraveSubject.next(true))
+    )
   }
 }

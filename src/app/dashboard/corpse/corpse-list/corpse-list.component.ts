@@ -29,6 +29,8 @@ export class CorpseListComponent implements OnInit {
       error: console.error,
       complete: () => {},
     }
+
+    this.corpseService.getAllCorpse().pipe().subscribe(this.subscriber)
   }
 
 }

@@ -5,12 +5,14 @@ import { map } from 'rxjs/operators';
 import { Validation } from '../shared/model/interface-model';
 import { Login } from './model/login-model';
 import { AuthService } from './service/auth.service';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
+
 export class AuthComponent implements OnInit, Validation {
   data!: Login;
 
@@ -20,20 +22,30 @@ export class AuthComponent implements OnInit, Validation {
   })
   storage: Storage = sessionStorage;
 
-  constructor(private readonly authService:AuthService, private readonly router:Router, private readonly activatedRoute:ActivatedRoute) { }
+  constructor(private readonly authService:AuthService, private readonly router:Router, private readonly activatedRoute:ActivatedRoute, private loadingBar: LoadingBarService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params
     .pipe(map((params:any)=>params.action))
     .subscribe((action) => {
-      if (action == 'logout') {
+      if (action == '') {
+        sessionStorage.removeItem('token') 
+        sessionStorage.removeItem('username')
+        this.router.navigateByUrl('/')
+      }
+      else if (action == 'logout') {
         sessionStorage.removeItem('token')
-        this.router.navigateByUrl('/auth')
+        sessionStorage.removeItem('username')
+        this.router.navigateByUrl('/')
       }
       else if (sessionStorage.getItem('token') && action == 'auth') {
-        this.router.navigateByUrl('/auth')
+        this.router.navigateByUrl('/dashboard')
       }
     })
+  }
+
+  startLoading() {
+    this.loadingBar.start()
   }
 
   onSubmit() {
@@ -45,7 +57,10 @@ export class AuthComponent implements OnInit, Validation {
         sessionStorage.setItem('token', response.token),
         sessionStorage.setItem('username', this.authForm.get('username')?.value)
       }, console.error)
-      this.router.navigateByUrl('/dashboard')
+      this.startLoading()
+      setTimeout(() => {
+        this.router.navigateByUrl('/dashboard')        
+      }, 2300);
     }
   }
 

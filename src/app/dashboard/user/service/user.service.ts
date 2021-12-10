@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, Subject } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map} from 'rxjs/operators';
 import { User } from '../model/user-model';
 
 @Injectable({
@@ -38,11 +38,22 @@ export class UserService {
     return this.subject.asObservable();
   }
 
-  public addUser(user: User): Observable<User> {
+  public addUser(user: User): Observable<any> {
     if (user.id) {
-      return this.http.put<User>('/api/user', user);
+      console.log(user);
+      return this.http
+        .put<User>(`/api/user`, user)
+        .pipe(catchError((error) => this.handleError(error)),
+        map((data)=> this.subject.next(true)),
+        );
     } else {
-      return this.http.post<any>('/api/register', user);
+      console.log(user);
+      return this.http
+        .post<User>(`/api/register`, user)
+        .pipe(
+          catchError((error) => this.handleError(error)),
+          map((data)=> this.subject.next(true)),
+        );
     }
   };
 

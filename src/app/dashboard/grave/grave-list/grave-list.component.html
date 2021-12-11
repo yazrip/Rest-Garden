@@ -16,6 +16,7 @@
           <th scope="col">Price</th>
           <th scope="col">Address</th>
           <th scope="col">Description</th>
+          <th scope="col">Image</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -30,6 +31,7 @@
             <td scope="row"> {{ grave.price }} </td>
             <td scope="row"> {{ grave.address }} </td>
             <td scope="row"> {{ grave.description }} </td>
+            <td scope="row"> <img src="{{ grave.image }}" style="width: 300px;"></td>
             <td> 
               <div>
                 <button 

@@ -1,5 +1,3 @@
-import { Transaction } from "../../transaction/model/transaction-model";
-
 export interface User{
     id: string;
     name: string;

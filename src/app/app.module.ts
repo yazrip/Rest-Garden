@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RequestInterceptor } from './shared/interceptors/request.interceptor';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+
 
 @NgModule({
   declarations: [
@@ -13,6 +15,7 @@ import { RequestInterceptor } from './shared/interceptors/request.interceptor';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    LoadingBarRouterModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true}

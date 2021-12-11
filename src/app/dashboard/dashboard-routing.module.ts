@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RouteGuard } from '../shared/guard/guard.guard';
 import { DashboardComponent } from './dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'grave', loadChildren: () => import('./grave/grave.module').then(m => m.GraveModule) }, 
-  { path: 'menu', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },
-  { path: 'transaction', loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule) },
-  { path: 'reservation', loadChildren: () => import('./reservation/reservation.module').then(m => m.ReservationModule) },
-  { path: 'corpse', loadChildren: () => import('./corpse/corpse.module').then(m => m.CorpseModule) },
-  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) }];
+  { path: '', canActivate:[RouteGuard], component: DashboardComponent },
+  { path: 'grave', canActivate:[RouteGuard], loadChildren: () => import('./grave/grave.module').then(m => m.GraveModule) }, 
+  { path: 'menu', canActivate:[RouteGuard], loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },
+  { path: 'transaction', canActivate:[RouteGuard], loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule) },
+  { path: 'reservation', canActivate:[RouteGuard], loadChildren: () => import('./reservation/reservation.module').then(m => m.ReservationModule) },
+  { path: 'corpse', canActivate:[RouteGuard], loadChildren: () => import('./corpse/corpse.module').then(m => m.CorpseModule) },
+  { path: 'user', canActivate:[RouteGuard], loadChildren: () => import('./user/user.module').then(m => m.UserModule) }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

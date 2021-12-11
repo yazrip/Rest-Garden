@@ -6,5 +6,6 @@ export interface Grave {
     phoneNumber: string,
     price: number,
     address: string,
-    description: string
+    description: string,
+    image: string;
 }

@@ -65,7 +65,7 @@ export class AuthComponent implements OnInit, Validation {
       this.startLoading()
       setTimeout(() => {
         this.router.navigateByUrl('/dashboard')
-      }, 2300);
+      }, 2800);
       
     }
   }

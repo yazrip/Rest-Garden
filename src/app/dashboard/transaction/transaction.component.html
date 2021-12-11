@@ -23,7 +23,7 @@
                             <td>{{ transaction.userName }}</td>
                             <td>{{ transaction.userBalance }}</td>
                             <td>{{ transaction.graveName }}</td>
-                            <td>{{ transaction.gravePrice }}</td>
+                            <td>{{ transaction.gravePrice | currency:'Rp.' }}</td>
                             <td>{{ transaction.totalSlot }}</td>
                             <td>{{ transaction.date }}</td>
                             <td>{{ transaction.description }}</td>

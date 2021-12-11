@@ -32,6 +32,7 @@ export class UserFormComponent implements OnInit {
     this.userForm.get('name')?.setValue(user.name);
     this.userForm.get('username')?.setValue(user.username);
     this.userForm.get('password')?.setValue(user.password);
+    this.userForm.get('address')?.setValue(user.address);
     this.userForm.get('email')?.setValue(user.email);
     this.userForm.get('phoneNumber')?.setValue(user.phoneNumber);
   }
@@ -44,7 +45,6 @@ export class UserFormComponent implements OnInit {
     private readonly userService: UserService, 
     private readonly router:Router, 
     private readonly activatedRoute:ActivatedRoute
-    
     ) { }
 
   ngOnInit(): void {

@@ -28,7 +28,7 @@
             <td scope="row"> {{ grave.type }} </td>
             <td scope="row"> {{ grave.availableSlots }} </td>
             <td scope="row"> {{ grave.phoneNumber }} </td>
-            <td scope="row"> {{ grave.price }} </td>
+            <td scope="row"> {{ grave.price | currency:'Rp.'}} </td>
             <td scope="row"> {{ grave.address }} </td>
             <td scope="row"> {{ grave.description }} </td>
             <td scope="row"> <img src="{{ grave.image }}" style="width: 300px;"></td>

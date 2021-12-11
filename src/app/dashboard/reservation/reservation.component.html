@@ -23,7 +23,7 @@
                             <td>{{ reservation.userName }}</td>
                             <td>{{ reservation.userBalance }}</td>
                             <td>{{ reservation.graveName }}</td>
-                            <td>{{ reservation.gravePrice }}</td>
+                            <td>{{ reservation.gravePrice | currency:'Rp.' }}</td>
                             <td>{{ reservation.totalSlot }}</td>
                             <td>{{ reservation.expiredDate }}</td>
                             <td>{{ reservation.description }}</td>

@@ -25,16 +25,14 @@ export class AuthComponent implements OnInit, Validation {
   constructor(private readonly authService:AuthService, private readonly router:Router, private readonly activatedRoute:ActivatedRoute, private loadingBar: LoadingBarService) { }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('token')) {
+      this.router.navigateByUrl('/dashboard')
+    }
     this.activatedRoute.params
     .pipe(map((params:any)=>params.action))
     .subscribe((action) => {
       this.stopLoading()
-      if (action == '') {
-        sessionStorage.removeItem('token') 
-        sessionStorage.removeItem('username')
-        this.router.navigateByUrl('/')
-      }
-      else if (action == 'logout') {
+      if (action == 'logout') {
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('username')
         this.router.navigateByUrl('/')
@@ -65,7 +63,7 @@ export class AuthComponent implements OnInit, Validation {
       this.startLoading()
       setTimeout(() => {
         this.router.navigateByUrl('/dashboard')
-      }, 2800);
+      }, 3100);
       
     }
   }

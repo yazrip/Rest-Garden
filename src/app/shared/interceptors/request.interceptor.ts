@@ -18,7 +18,7 @@ export class RequestInterceptor implements HttpInterceptor {
 
     if (error.status === 401 || error.status === 403) {
       alert(`Terjadi Error ${error.status} ${error.statusText}`);
-      this.router.navigateByUrl('/logout')
+      this.router.navigateByUrl('/')
     }
     return throwError(error)
   };

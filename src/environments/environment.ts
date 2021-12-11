@@ -6,6 +6,12 @@ export const environment = {
   production: false
 };
 
+export const messages: any = {
+  required: 'Field %s is Required',
+  minlength: 'Field %s at Least Have %s Characters',
+  min: 'Field %s Must Greater than %s or an Integer',
+  email: 'Correct Form: example@example.com',
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

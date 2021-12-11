@@ -4,7 +4,6 @@
         <table class="table table-responsive" style="color: #D8E9A8 ;">
             <thead class="thead-dark">
                 <tr class="text-center">
-                    <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">User Name</th>
                     <th scope="col">Email</th>
@@ -16,7 +15,6 @@
             <ng-container *ngIf="users.length > 0; else kosong">
                 <tbody *ngFor="let user of users">
                     <tr>
-                        <td>{{ user.id }}</td>
                         <td>{{ user.name }}</td>
                         <td>{{ user.username }}</td>
                         <td>{{ user.email }}</td>
@@ -42,7 +40,7 @@
             <ng-template #kosong>
                 <tbody>
                     <tr>
-                        <td colspan="8" rowspan="5" class="text-center mt-2 fs-5 fw-bold">
+                        <td colspan="10" rowspan="5" class="text-center mt-2 fs-5 fw-bold">
                             Data Kosong
                         </td>
                     </tr>

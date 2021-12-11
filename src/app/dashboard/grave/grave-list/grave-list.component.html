@@ -8,7 +8,6 @@
         <table class="table table-responsive" style="color: #D8E9A8;">
           <thead>
             <tr>
-          <th scope="col">Grave ID</th>
           <th scope="col">Name Grave</th>
           <th scope="col">Type</th>
           <th scope="col">Available Slots</th>
@@ -23,7 +22,6 @@
       <ng-container *ngIf="graves.length > 0; else kosong">
         <tbody *ngFor="let grave of graves">
           <tr>
-            <td scope="row"> {{ grave.id }}</td>
             <td scope="row"> {{ grave.name }} </td>
             <td scope="row"> {{ grave.type }} </td>
             <td scope="row"> {{ grave.availableSlots }} </td>
@@ -31,7 +29,7 @@
             <td scope="row"> {{ grave.price | currency:'Rp.'}} </td>
             <td scope="row"> {{ grave.address }} </td>
             <td scope="row"> {{ grave.description }} </td>
-            <td scope="row"> <img src="{{ grave.image }}" style="width: 300px;"></td>
+            <td scope="row"> <img src="{{ grave.image }}" style="width: 250px; height: 150px;"></td>
             <td> 
               <div>
                 <button 
@@ -40,10 +38,6 @@
                 routerLink="/dashboard/grave/{{ grave.id }}">
                 <i class="bi bi-box-arrow-right"></i>
                 <i class="fas fa-edit"></i></button>
-                <button 
-                type="button" 
-                class="btn btn-danger m-1"
-                (click)="onDeleteGrave(grave.id)"><i class="fas fa-trash"></i></button>
              </div>
               </td>
           </tr>
@@ -52,7 +46,7 @@
       <ng-template #kosong>
         <tbody>
           <tr>
-              <td colspan="8" rowspan="5" class="text-center mt-2 fs-5 fw-bold">
+              <td colspan="10" rowspan="5" class="text-center mt-2 fs-5 fw-bold">
                   Data Kosong
               </td>
           </tr>

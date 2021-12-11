@@ -11,6 +11,7 @@ import { TransactionService } from './service/transaction.service';
 })
 export class TransactionComponent implements OnInit {
   transactions: Transaction[] = []
+  transactionsClone: Transaction[] = []
   subscriber?: Observer<any>;
   
   constructor(private readonly transactionService: TransactionService) { }
@@ -32,5 +33,14 @@ export class TransactionComponent implements OnInit {
     };
 
     this.transactionService.getAll().pipe(delay(500)).subscribe(this.subscriber)
+  }
+
+  liveSearch(event: any) : void {
+    if (event.target.value != '') {
+      let search: string = event.target.value.toLowerCase()
+      this.transactionsClone = this.transactions.filter(e => e.userName.toLowerCase().includes(search) || e.graveName.toLowerCase().includes(search))
+    } else {
+      this.transactionsClone = this.transactions
+    }
   }
 }

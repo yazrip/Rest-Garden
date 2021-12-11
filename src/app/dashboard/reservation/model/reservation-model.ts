@@ -6,6 +6,6 @@ export interface Reservation{
     userBalance: number
     totalSlot: number
     status: String
-    expiredDate: String
+    expiredDate: Number
     description: String
 }

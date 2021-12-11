@@ -12,6 +12,7 @@ import { ReservationService } from './service/reservation.service';
 export class ReservationComponent implements OnInit {
 
   reservations: Reservation[] = []
+  reservationsClone: Reservation[] = []
   subscriber?: Observer<any>;
   
   constructor(private readonly reservationService: ReservationService) { }
@@ -27,11 +28,23 @@ export class ReservationComponent implements OnInit {
 
   getAll(){
     this.subscriber = {
-      next: (data: any) => {this.reservations = data, console.log(data)},
+      next: (data: any) => {
+        this.reservations = data, console.log(data)
+        this.reservationsClone = data
+      },
       error: console.error,
       complete: () => {},
     };
 
     this.reservationService.getAll().pipe(delay(500)).subscribe(this.subscriber)
+  }
+
+  liveSearch(event: any) : void {
+    if (event.target.value != '') {
+      let search: string = event.target.value.toLowerCase()
+      this.reservationsClone = this.reservations.filter(e => e.userName.toLowerCase().includes(search) || e.graveName.toLowerCase().includes(search) || e.expiredDate.toString().includes(search))
+    } else {
+      this.reservationsClone = this.reservations
+    }
   }
 }

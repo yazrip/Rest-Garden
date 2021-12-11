@@ -51,9 +51,17 @@ export class GraveService {
     console.log(formData.get('graveString'), formData.get('image'));
     if (grave.id) {
       formData.append('id', `${grave.id}`);
-      return this.http.put<any>('/api/register/upload', formData);
+      return this.http
+        .put<any>('/api/register/upload', formData)
+        .pipe(catchError((error) => this.handleError(error)),
+        map((data)=> this.GraveSubject.next(true)),
+        );
     } else {
-      return this.http.post<any>('/api/register/upload', formData);
+      return this.http
+        .post<any>('/api/register/upload', formData)
+        .pipe(catchError((error) => this.handleError(error)),
+        map((data)=> this.GraveSubject.next(true)),
+        );
     }
 
 

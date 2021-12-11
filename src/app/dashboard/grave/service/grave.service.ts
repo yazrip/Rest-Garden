@@ -38,24 +38,41 @@ export class GraveService {
     return this.http.get<Grave>(`/api/grave/${id}`);
   }
 
-  public createGrave(grave: Grave): Observable<any> {
-    if (grave.id) {
-      console.log(grave);
-      return this.http
-        .put<Grave>(`/api/grave`, grave)
-        .pipe(catchError((error) => this.handleError(error)),
-        map((data)=> this.GraveSubject.next(true)),
-        );
-    } else {
-      console.log(grave);
-      return this.http
-        .post<Grave>(`/api/grave`, grave)
-        .pipe(
-          catchError((error) => this.handleError(error)),
-          map((data)=> this.GraveSubject.next(true)),
-        );
+  public createGrave(grave: Grave, image?: File): Observable<any> {
+    const formData: FormData = new FormData();
+
+    let graveDTO = JSON.stringify(grave)
+    formData.append('graveString', graveDTO);
+
+    console.log(graveDTO, image);
+    if (image) {
+      formData.append('image', image, image.name)
     }
-  
+    console.log(formData.get('graveString'), formData.get('image'));
+    if (grave.id) {
+      formData.append('id', `${grave.id}`);
+      return this.http.put<any>('/api/register/upload', formData);
+    } else {
+      return this.http.post<any>('/api/register/upload', formData);
+    }
+
+
+    // if (grave.id) {
+    //   console.log(grave);
+    //   return this.http
+    //     .put<Grave>(`/api/grave`, grave)
+    //     .pipe(catchError((error) => this.handleError(error)),
+    //     map((data)=> this.GraveSubject.next(true)),
+    //     );
+    // } else {
+    //   console.log(grave);
+    //   return this.http
+    //     .post<Grave>(`/api/grave`, grave)
+    //     .pipe(
+    //       catchError((error) => this.handleError(error)),
+    //       map((data)=> this.GraveSubject.next(true)),
+    //     );
+    // }
   };
 
   public deleteGrave(id: string): Observable<void> {
@@ -64,4 +81,6 @@ export class GraveService {
       map(() => this.GraveSubject.next(true))
     )
   }
+
+  
 }

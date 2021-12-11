@@ -13,6 +13,8 @@ import { GraveService } from '../service/grave.service';
 })
 export class GraveFormComponent implements OnInit {
 
+  image?: File
+
   graveForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     type: new FormControl([Validators.required]),
@@ -21,6 +23,7 @@ export class GraveFormComponent implements OnInit {
     price: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
+    image: new FormControl('', [Validators.required]),
   });
 
   id: string | null = null;
@@ -35,6 +38,7 @@ export class GraveFormComponent implements OnInit {
     this.graveForm.get('price')?.setValue(grave.price);
     this.graveForm.get('address')?.setValue(grave.address);
     this.graveForm.get('description')?.setValue(grave.description);
+    this.graveForm.get('image')?.setValue(grave.image);
   }
 
   grave?: Grave;
@@ -67,9 +71,10 @@ export class GraveFormComponent implements OnInit {
   addGrave(): void {
     const grave: Grave = this.graveForm.value;
     console.log('grave form value:', grave);
+    this.image = this.graveForm.get('image')?.value
 
     this.graveService
-      .createGrave(grave)
+      .createGrave(grave, this.image)
       .pipe()
       .subscribe((grave: Grave)=> {
         this.onReset()
@@ -101,6 +106,16 @@ export class GraveFormComponent implements OnInit {
   onReset(): void {
     this.grave = undefined;
     this.graveForm.reset();
+  }
+
+  handleFileUpload(event: any): void {
+    const files: FileList = event.target.files;
+    console.log(event.target.files);
+    
+    if (files) {
+      this.image = files.item(0) as File;
+      this.graveForm.get('image')?.setValue(this.image)
+    }
   }
 
 }

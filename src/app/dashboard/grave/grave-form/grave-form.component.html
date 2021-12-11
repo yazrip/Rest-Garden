@@ -71,9 +71,21 @@
       style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
       >
     </div>
+    <div class="mb-3">
+      <label for="exampleInputPhoto" class="form-label" style="color: #D8E9A8;"><b>Add Photo</b></label>
+      <input
+        class="form-control"
+        formControlName="image"
+        (change)="handleFileUpload($event)"
+        type="file"
+        id="formFile"
+      />
+    </div>
     <div class="row mt-3">
       <div class="col-12 d-flex justify-content-center">
         <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: #D8E9A8;" (click)="addGrave()" [disabled]="graveForm.invalid"><b>Submit</b></button>
       </div>
     </div>
 </form>  
+
+

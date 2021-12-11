@@ -22,7 +22,7 @@
       <ng-container *ngIf="graves.length > 0; else kosong">
         <tbody *ngFor="let grave of graves">
           <tr>
-            <td scope="row"> {{ grave.name }} </td>
+            <td scope="row"><b>{{ grave.name }}</b></td>
             <td scope="row"> {{ grave.type }} </td>
             <td scope="row"> {{ grave.availableSlots }} </td>
             <td scope="row"> {{ grave.phoneNumber }} </td>

@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Corpse } from '../model/corpse-model';
+import { Corpses } from '../model/corpse-model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +25,9 @@ export class CorpseService {
     return EMPTY;
   }
 
-  public getAllCorpse(): Observable<Corpse[]> {
+  public getAllCorpse(): Observable<Corpses[]> {
     return this.http
-      .get<Corpse[]>('/api/corpses')
+      .get<Corpses[]>('/api/corpses')
       .pipe(catchError((error) => this.handleError(error)));
   }
 
@@ -34,18 +35,18 @@ export class CorpseService {
     return this.subject.asObservable();
   }
 
-  public addCorpse(corpse: Corpse): Observable<any> {
+  public addCorpse(corpse: Corpses): Observable<any> {
     if (corpse.id) {
       console.log(corpse);
       return this.http
-        .put<Corpse>(`/api/corpse`, corpse)
+        .put<Corpses>(`/api/corpse`, corpse)
         .pipe(catchError((error) => this.handleError(error)),
         map((data)=> this.subject.next(true)),
         );
     } else {
       console.log(corpse);
       return this.http
-        .post<Corpse>(`/api/corpse`, corpse)
+        .post<Corpses>(`/api/corpse`, corpse)
         .pipe(
           catchError((error) => this.handleError(error)),
           map((data)=> this.subject.next(true)),

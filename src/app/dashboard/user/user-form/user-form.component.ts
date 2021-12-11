@@ -91,7 +91,7 @@ export class UserFormComponent implements OnInit {
     return !this.userForm.get('username')?.value;
   }
 
-  isFieldValid(fieldName: string): { [key: string]: boolean } {
+  isFieldValid(fieldName: string): string {
     const control: AbstractControl = this.userForm.get(fieldName) as AbstractControl;
 
     const classes = {
@@ -109,7 +109,7 @@ export class UserFormComponent implements OnInit {
     }else if (control && control.valid) {
       classes['is-valid'] = true;
     }
-    return classes
+    return '';
   }
 
   displayErrors(fieldName:string):string {

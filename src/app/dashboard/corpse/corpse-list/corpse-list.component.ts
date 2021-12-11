@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observer } from 'rxjs';
-import { Corpse } from '../model/corpse-model';
+import { Corpses } from '../model/corpse-model';
 import { CorpseService } from '../service/corpse.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { CorpseService } from '../service/corpse.service';
 })
 export class CorpseListComponent implements OnInit {
 
-  corpses: Corpse[] = [];
+  corpses: Corpses[] = [];
   subscriber?: Observer<any>
 
   constructor(private readonly corpseService: CorpseService) { }

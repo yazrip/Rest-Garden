@@ -18,14 +18,23 @@
     </div>
     <div class="col-6">
       <div class="mb-3">
-        <label for="exampleInputLocation" class="form-label" style="color: #D8E9A8;"><b>Location</b></label>
-        <select class="form-control" name="" id="" style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;">
+        <label for="exampleInputGraveName" class="form-label" style="color: #D8E9A8;"><b>Grave Name</b></label>
+        <select class="form-control" name="graveId" id="graveId" formControlName="graveId" style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;">
           <ng-container *ngFor="let grave of graves">
           <option value="{{grave.id}}">{{grave.name}}</option>
         </ng-container>
         </select>
       </div>
     </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputLocation" class="form-label" style="color: #D8E9A8;"><b>Location</b></label>
+    <input type="text" 
+    class="form-control" 
+    id="exampleInputLocation"
+    formControlName="location"
+    style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+    >
   </div>
     <div class="mb-3">
       <label for="exampleInputType" class="form-label" style="color: #D8E9A8;"><b>Parent Name</b></label>

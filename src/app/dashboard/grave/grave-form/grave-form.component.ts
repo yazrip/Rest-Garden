@@ -83,10 +83,10 @@ export class GraveFormComponent implements OnInit {
   }
 
   isValid(): boolean {
-    return !this.graveForm.get('usermame')!.value;
+    return !this.graveForm.get('username')!.value;
   }
 
-  isFielValid(fieldName: string): string {
+  isFieldValid(fieldName: string): string {
     const control: AbstractControl = this.graveForm.get(fieldName) as AbstractControl;
     
     if (control && control.touched && control.invalid) {

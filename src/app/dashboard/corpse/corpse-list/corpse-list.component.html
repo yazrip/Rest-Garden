@@ -6,30 +6,22 @@
       </div>
       <div class="table-responsive">
         <table class="table table-responsive" style="color: #D8E9A8;">
-          <thead class="thead-dark">
+          <thead>
             <tr class="text-center">
               <th scope="col">Corpse ID</th>
               <th scope="col">Name Corpse</th>
+              <th scope="col">Grave Name</th>
               <th scope="col">Location</th>
               <th scope="col">Parent Name</th>
-              <th scope="col">Action</th>
             </tr>
+            </thead>
             <ng-container *ngIf="corpses.length > 0; else kosong">
-              <tbody *ngFor="let corpse of corpses">
-                <td scope="row"> {{ corpse.id }}</td>
-                <td scope="row"> {{ corpse.name }}</td>
-                <td scope="row"> {{ corpse.location }}</td>
-                <td scope="row"> {{ corpse.parentName }}</td>
-                <td> 
-                  <div>
-                    <button 
-                    type="button" 
-                    class="btn btn-warning m-1"
-                    routerLink="{{ corpse.id }}">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <i class="fas fa-edit"></i></button>
-                 </div>
-                  </td>
+              <tbody *ngFor="let corpse of corpses" class="text-center">
+                <td scope="row">{{ corpse.id }}</td>
+                <td scope="row">{{ corpse.name }}</td>
+                <td scope="row">{{ corpse.grave.name }}</td>
+                <td scope="row">{{ corpse.location }}</td>
+                <td scope="row">{{ corpse.parentName }}</td>
               </tbody>
             </ng-container>
             <ng-template #kosong>
@@ -41,7 +33,6 @@
                   </tr>
               </tbody>
           </ng-template>
-          </thead>
         </table>
       </div>
   </div>

@@ -6,8 +6,8 @@
       </div>
       <div class="table-responsive">
         <table class="table table-responsive" style="color: #D8E9A8;">
-          <thead class="thead-dark">
-            <tr class="text-center">
+          <thead>
+            <tr>
           <th scope="col">Grave ID</th>
           <th scope="col">Name Grave</th>
           <th scope="col">Type</th>
@@ -35,7 +35,7 @@
                 <button 
                 type="button" 
                 class="btn btn-warning m-1"
-                routerLink="{{ grave.id }}">
+                routerLink="/dashboard/grave/{{ grave.id }}">
                 <i class="bi bi-box-arrow-right"></i>
                 <i class="fas fa-edit"></i></button>
                 <button 

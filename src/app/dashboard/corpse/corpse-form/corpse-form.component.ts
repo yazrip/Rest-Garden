@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY, Observer } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Grave } from '../../grave/model/grave-model';
 import { GraveService } from '../../grave/service/grave.service';
-import { Corpse } from '../model/corpse-model';
+import { Corpses } from '../model/corpse-model';
 import { CorpseService } from '../service/corpse.service';
 
 
@@ -18,19 +18,22 @@ export class CorpseFormComponent implements OnInit {
 
   corpseForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
+    graveId: new FormControl('', [Validators.required]),
     location: new FormControl('', [Validators.required]),
     parentName: new FormControl('', [Validators.required]),
   });
+  id: string | null = null;
 
-  setFormValues(corpse: Corpse): void {
+  setFormValues(corpse: Corpses): void {
     this.corpseForm.addControl('id', new FormControl);
     this.corpseForm.get('id')?.setValue(corpse.id);
     this.corpseForm.get('name')?.setValue(corpse.name);
+    this.corpseForm.get('graveId')?.setValue(corpse.grave.id);
     this.corpseForm.get('location')?.setValue(corpse.location);
     this.corpseForm.get('parentName')?.setValue(corpse.parentName);
   }
   graves: Grave[] = [];
-  corpse?: Corpse;
+  corpse?: Corpses;
   subscriber?: Observer<any>
 
   constructor(
@@ -55,15 +58,15 @@ export class CorpseFormComponent implements OnInit {
   }
 
   addCorpse(): void {
-    const corpse: Corpse = this.corpseForm.value;
+    const corpse: Corpses = this.corpseForm.value;
     console.log('corpse form value:', corpse);
 
     this.corpseService
       .addCorpse(corpse)
       .pipe()
-      .subscribe((corpse: Corpse)=> {
+      .subscribe((corpse: Corpses)=> {
         this.onReset()
-        this.router.navigateByUrl("/corpse")
+        this.router.navigateByUrl("/dashboard/corpse")
       },
       (error : any) => {
         console.error(error)
@@ -75,6 +78,22 @@ export class CorpseFormComponent implements OnInit {
   onReset(): void {
     this.corpse = undefined;
     this.corpseForm.reset();
+  }
+
+  isValid(): boolean {
+    return !this.corpseForm.get('username')!.value;
+  }
+
+  isFieldValid(fieldName: string): string {
+    const control: AbstractControl = this.corpseForm.get(fieldName) as AbstractControl;
+
+    if (control && control.touched && control.invalid) {
+      return 'is-invalid';
+    } else if (control && control.invalid) {
+      return 'is-valid'
+    } else {
+      return '';
+    }
   }
 }
 

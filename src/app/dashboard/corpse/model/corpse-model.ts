@@ -1,7 +1,9 @@
-export interface Corpse{
+import { Grave } from "../../grave/model/grave-model";
+
+export interface Corpses{
     id: string,
-    name: string, 
+    name: string,
+    parentName: string,
     location: string,
-    date: string,
-    parentName: string
+    grave: Grave,
 }

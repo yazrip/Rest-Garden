@@ -44,7 +44,7 @@ export class GraveService {
       return this.http
         .put<Grave>(`/api/grave`, grave)
         .pipe(catchError((error) => this.handleError(error)),
-        map((data)=> this.subject.next(true)),
+        map((data)=> this.GraveSubject.next(true)),
         );
     } else {
       console.log(grave);
@@ -52,7 +52,7 @@ export class GraveService {
         .post<Grave>(`/api/grave`, grave)
         .pipe(
           catchError((error) => this.handleError(error)),
-          map((data)=> this.subject.next(true)),
+          map((data)=> this.GraveSubject.next(true)),
         );
     }
   

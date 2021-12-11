@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { messages } from 'src/environments/environment';
 
 @Component({
   selector: 'app-validation-message, [validation-message]',
@@ -33,6 +32,7 @@ export class ValidationMessageComponent{
     return message;
 
   }
+  
 
   private formatString(text: string, params: any[]): string{
     let i = 0;
@@ -41,3 +41,9 @@ export class ValidationMessageComponent{
   };
 }
 
+export const messages: any = {
+  required: 'Field %s is Required',
+  minlength: 'Field %s at Least Have %s Characters',
+  min: 'Field %s Must Greater than %s or an Integer',
+  email: 'Correct Form: example@example.com',
+};

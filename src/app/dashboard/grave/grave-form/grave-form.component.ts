@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY } from 'rxjs';
 import { delay, map, switchMap } from 'rxjs/operators';
+import { messages } from 'src/environments/environment';
 import { Grave } from '../model/grave-model';
 import { GraveService } from '../service/grave.service';
 
@@ -18,9 +19,9 @@ export class GraveFormComponent implements OnInit {
   graveForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     type: new FormControl([Validators.required]),
-    availableSlots: new FormControl('', [Validators.required]),
+    availableSlots: new FormControl('', [Validators.required, Validators.min(0)]),
     phoneNumber: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required, Validators.min(0)]),
     address: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     image: new FormControl('', [Validators.required]),
@@ -47,7 +48,6 @@ export class GraveFormComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly graveService: GraveService,
     private readonly router: Router,
-
   ) { }
 
   ngOnInit(): void {
@@ -73,7 +73,12 @@ export class GraveFormComponent implements OnInit {
     console.log('grave form value:', grave);
     this.image = this.graveForm.get('image')?.value
 
-    this.graveService
+    if (this.graveForm.get('price')?.value < 0) {
+      this.graveForm.get('price')?.setValue(0)
+    }else if (this.graveForm.get('availableSlots')?.value < 0) {
+      this.graveForm.get('availableSlots')?.setValue(0)
+    }{
+      this.graveService
       .createGrave(grave, this.image)
       .pipe()
       .subscribe((grave: Grave)=> {
@@ -84,6 +89,7 @@ export class GraveFormComponent implements OnInit {
         console.error(error)
       },
       )
+    }
     
   }
 
@@ -91,14 +97,48 @@ export class GraveFormComponent implements OnInit {
     return !this.graveForm.get('username')!.value;
   }
 
-  isFieldValid(fieldName: string): string {
+  isFieldValid(fieldName: string): { [key: string]: boolean } {
     const control: AbstractControl = this.graveForm.get(fieldName) as AbstractControl;
-    
+
+    const classes = {
+      'is-invalid': false,
+      'is-valid': false
+    }
+
+    control.valid;
+    control.invalid;
+    control.dirty;
+    control.touched;
+
     if (control && control.touched && control.invalid) {
-      return 'is-invalid';
-    } else if (control && control.invalid) {
-      return 'is-valid'
-    } else {
+      classes['is-invalid'] = true;
+    }else if (control && control.valid) {
+      classes['is-valid'] = true;
+    }
+    return classes
+  }
+
+  displayErrors(fieldName:string):string {
+    const control: AbstractControl = this.graveForm.get(fieldName) as AbstractControl;
+    const messages: any = {
+      "required":"Field must be filled"
+    }
+
+    if (control && control.errors) {
+      const error = Object.values(control.errors).pop();
+      const key: string = Object.keys(control.errors).pop() as string;
+
+      let message = messages[key];
+
+      console.log(message);
+
+      if (key === 'minlength') {
+        console.log(error);
+
+        message = message.replace('{minlength}', error.requiredLength)
+      }
+      return message;
+    }else{
       return '';
     }
   }

@@ -26,14 +26,17 @@
       </div>
     </div>
   </div>
-  <div class="mb-3">
+  <div class="mb-3 has-validation">
       <label for="exampleInputAvailableSlots" class="form-label" style="color: #D8E9A8;"><b>Available Slots</b></label>
       <input type="number" 
+      min="0"
       class="form-control" 
       id="exampleInputPhone"
       formControlName="availableSlots"
+      [ngClass]="isFieldValid('availableSlots')"
       style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
       >
+    <div class="invalid-feedback" validation-message [control]="graveForm.controls['availableSlots']" [label]="'Available Slots'"></div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPhoneNumber" class="form-label" style="color: #D8E9A8;"><b>Phone Number</b></label>
@@ -44,14 +47,17 @@
       style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
       >
     </div>
-    <div class="mb-3">
+    <div class="mb-3 has-validation">
       <label for="exampleInputPrice" class="form-label" style="color: #D8E9A8;"><b>Price</b></label>
-      <input type="text" 
+      <input type="number"
+      min="0"
       class="form-control" 
       id="exampleInputPrice"
+      [ngClass]="isFieldValid('price')"
       formControlName="price"
       style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
       >
+    <div class="invalid-feedback" validation-message [control]="graveForm.controls['price']" [label]="'Price'"></div>
     </div>
     <div class="mb-3">
       <label for="exampleInputAddress" class="form-label" style="color: #D8E9A8;"><b>Address</b></label>

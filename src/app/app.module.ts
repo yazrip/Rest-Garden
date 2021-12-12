@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RequestInterceptor } from './shared/interceptors/request.interceptor';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
-
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 @NgModule({
   declarations: [
@@ -16,6 +16,9 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
     AppRoutingModule,
     HttpClientModule,
     LoadingBarRouterModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger', // set defaults here
+    }),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true}

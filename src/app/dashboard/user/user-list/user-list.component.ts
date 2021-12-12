@@ -12,6 +12,7 @@ import { UserService } from '../service/user.service';
 export class UserListComponent implements OnInit {
 
   users: User[] = [];
+  id!: string;
   subscriber?: Observer<any>
 
   constructor(private readonly userService: UserService) { }
@@ -24,6 +25,9 @@ export class UserListComponent implements OnInit {
         this.getAllUser();
       }
     });
+  }
+  setId(id: string){
+    this.id = id;
   }
   getAllUser() {
     this.subscriber = {

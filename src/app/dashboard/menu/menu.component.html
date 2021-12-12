@@ -1,4 +1,4 @@
-<div class="container shadow-lg mt-4 p-1" style="border-radius: 20px; background-color: #D8E9A8;">
+<div class="container shadow-lg mt-4 p-1 mb-4" style="width: 900px; border-radius: 20px; background-color: #D8E9A8;">
     <div class="row mt-4">
         <div class="col d-flex justify-content-center">
             <h1 style="font-size: 70px;">Management</h1>
@@ -11,22 +11,31 @@
     </div>
     <div class="row mt-4 d-flex justify-content-center">
         <div class="col-md-3 d-flex justify-content-center">
-            <button class="shadow btnMenu p-4" [routerLink]="['/dashboard/corpse']">Corpse</button>
+            <button class="shadow btnMenu1 p-4" [routerLink]="['/dashboard/corpse']">Corpse</button>
         </div>
         <div class="col-md-3 d-flex justify-content-center">
-            <button class="shadow btnMenu p-4" [routerLink]="['/dashboard/grave']">Grave</button>
+            <button class="shadow btnMenu1 p-4" [routerLink]="['/dashboard/grave']">Grave</button>
         </div>
     </div>
     <div class="row mt-5 d-flex justify-content-center">
         <div class="col-md-3 d-flex justify-content-center">
-            <button class="shadow btnMenu p-4" [routerLink]="['/dashboard/transaction']">Transaction</button>
+            <div class="btn btnMenu2 py-4" [routerLink]="['/dashboard/transaction']">Transaction</div>
         </div>
         <div class="col-md-3 d-flex justify-content-center">
-            <button class="shadow btnMenu p-4" [routerLink]="['/dashboard/reservation']">Reservation</button>
+            <div class="btn btnMenu2 py-4" [routerLink]="['/dashboard/reservation']">Reservation</div>
         </div>
         <div class="col-md-3 d-flex justify-content-center">
-            <button class="shadow btnMenu p-4" [routerLink]="['/dashboard/user']">User</button>
+            <div class="btn btnMenu2 py-4" [routerLink]="['/dashboard/user']">User</div>
         </div>
+        <!-- <div class="col-md-4 d-flex justify-content-center">
+            <button class="shadow btnMenu2" [routerLink]="['/dashboard/transaction']">Transaction</button>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center">
+            <button class="shadow btnMenu2" [routerLink]="['/dashboard/reservation']">Reservation</button>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center">
+            <button class="shadow btnMenu2" [routerLink]="['/dashboard/user']">User</button>
+        </div> -->
     </div>
     <div class="row mt-1">
         <div class="col-md-12 d-flex justify-content-center">

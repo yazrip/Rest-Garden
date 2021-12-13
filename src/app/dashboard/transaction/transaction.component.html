@@ -3,12 +3,9 @@
     <div class="card shadow-lg mt-3 mb-5 mx-3 p-4" style="background-color: #1E5128; border-radius: 20px; border-style: none;">
         <h1 class="mb-5" style="color: #D8E9A8; font-size: 50px;">Transaction List</h1>
         <div class="d-flex justify-content-end mb-4">
-            <div class="div">
-                <input type="text" class="px-3" placeholder="Search here" (keyup)="liveSearch($event)" style="border-style: none; height: 38px; border-radius: 10px;">
-            </div>
         </div>
         <div class="table-responsive">
-            <table class="table table-responsive" style="color: #D8E9A8;">
+            <table class="table table-responsive" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="color: #D8E9A8;">
                 <thead class="thead-dark">
                     <tr class="text-center">
                         <th scope="col">User Name</th>
@@ -19,18 +16,16 @@
                         <th scope="col">Description</th> 
                     </tr>
                 </thead>
-                <ng-container *ngIf="transactions.length > 0; else kosong">
-                    <tbody *ngFor="let transaction of transactions">
-                        <tr>
+                    <tbody *ngIf="transactions.length > 0; else kosong">
+                        <tr *ngFor="let transaction of transactions" style="background-color: #1E5128;">
                             <td>{{ transaction.userName }}</td>
                             <td>{{ transaction.graveName }}</td>
                             <td>{{ transaction.gravePrice | currency:'Rp.' }}</td>
                             <td>{{ transaction.totalSlot }}</td>
-                            <td>{{ transaction.date }}</td>
+                            <td>{{ transaction.date.toString() | date:'longDate' }}</td>
                             <td>{{ transaction.description }}</td>
                         </tr>
                     </tbody>
-                </ng-container>
                 <ng-template #kosong>
                     <tbody>
                         <tr>

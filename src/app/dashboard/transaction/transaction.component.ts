@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observer } from 'rxjs';
+import { Observer, Subject } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Transaction } from './model/transaction-model';
 import { TransactionService } from './service/transaction.service';
@@ -15,8 +15,16 @@ export class TransactionComponent implements OnInit {
   subscriber?: Observer<any>;
   
   constructor(private readonly transactionService: TransactionService) { }
-
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+  
   ngOnInit(): void {
+    this.dtOptions={
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu: [5, 10, 15, 50],
+      processing: true
+    }
     this.getAll()
     this.transactionService.listUpdated().subscribe((updated: boolean) => {
       if (updated) {
@@ -27,7 +35,11 @@ export class TransactionComponent implements OnInit {
 
   getAll(){
     this.subscriber = {
-      next: (data: any) => {this.transactions = data, console.log(data)},
+      next: (data: any) => {
+        this.transactions = data; 
+        console.log(data);
+        this.dtTrigger.next();
+      },
       error: console.error,
       complete: () => {},
     };

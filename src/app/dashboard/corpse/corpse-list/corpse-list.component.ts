@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observer } from 'rxjs';
+import { Observer, Subject } from 'rxjs';
 import { Corpses } from '../model/corpse-model';
 import { CorpseService } from '../service/corpse.service';
 
@@ -14,8 +14,17 @@ export class CorpseListComponent implements OnInit {
   subscriber?: Observer<any>
 
   constructor(private readonly corpseService: CorpseService) { }
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
 
   ngOnInit(): void {
+    this.dtOptions={
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu: [5, 10, 15, 50],
+      processing: true
+    }
     this.getAllCorpse()
     this.corpseService.listUpdated().subscribe((updated: boolean) => {
       if (updated) {
@@ -25,7 +34,11 @@ export class CorpseListComponent implements OnInit {
   }
   getAllCorpse() {
     this.subscriber = {
-      next: (data: any) => {this.corpses = data, console.log(data)},
+      next: (data: any) => {
+        this.corpses = data; 
+        console.log(data);
+        this.dtTrigger.next();
+      },
       error: console.error,
       complete: () => {},
     }

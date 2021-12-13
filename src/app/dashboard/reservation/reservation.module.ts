@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReservationRoutingModule } from './reservation-routing.module';
 import { ReservationComponent } from './reservation.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     ReservationRoutingModule,
-    SharedModule
+    SharedModule,
+    DataTablesModule
   ]
 })
 export class ReservationModule { }

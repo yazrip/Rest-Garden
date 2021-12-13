@@ -5,25 +5,27 @@
         </div>
       </div>
       <div class="table-responsive">
-        <table class="table table-responsive" style="color: #D8E9A8;">
+        <table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="color: #D8E9A8;">
           <thead>
             <tr class="text-center">
-              <th scope="col">Corpse ID</th>
+              <th scope="col">Corpse ID</th> 
               <th scope="col">Name Corpse</th>
               <th scope="col">Grave Name</th>
               <th scope="col">Block Location</th>
               <th scope="col">Parent Name</th>
             </tr>
             </thead>
-            <ng-container *ngIf="corpses.length > 0; else kosong">
-              <tbody *ngFor="let corpse of corpses" class="text-center">
-                <td scope="row">{{ corpse.id }}</td>
-                <td scope="row">{{ corpse.name }}</td>
-                <td scope="row">{{ corpse.grave.name }}</td>
-                <td scope="row">{{ corpse.location }}</td>
-                <td scope="row">{{ corpse.parentName }}</td>
+            <!-- <ng-container > -->
+              <tbody *ngIf="corpses.length > 0; else kosong">
+                <tr *ngFor="let corpse of corpses" class="text-start" style="background-color: #1E5128;">
+                  <td scope="row">{{ corpse.id }}</td>
+                  <td scope="row">{{ corpse.name }}</td>
+                  <td scope="row">{{ corpse.grave.name }}</td>
+                  <td scope="row">{{ corpse.location }}</td>
+                  <td scope="row">{{ corpse.parentName }}</td>
+                </tr>
               </tbody>
-            </ng-container>
+            <!-- </ng-container> -->
             <ng-template #kosong>
               <tbody>
                   <tr>

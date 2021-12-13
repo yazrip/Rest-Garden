@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observer } from 'rxjs';
+import { Observer, Subject } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Reservation } from './model/reservation-model';
 import { ReservationService } from './service/reservation.service';
@@ -16,8 +16,16 @@ export class ReservationComponent implements OnInit {
   subscriber?: Observer<any>;
   
   constructor(private readonly reservationService: ReservationService) { }
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
 
   ngOnInit(): void {
+    this.dtOptions={
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu: [5, 10, 15, 50],
+      processing: true
+    }
     this.getAll()
     this.reservationService.listUpdated().subscribe((updated: boolean) => {
       if (updated) {
@@ -29,8 +37,9 @@ export class ReservationComponent implements OnInit {
   getAll(){
     this.subscriber = {
       next: (data: any) => {
-        this.reservations = data, console.log(data)
-        this.reservationsClone = data
+        this.reservations = data, console.log(data);
+        this.reservationsClone = data;
+        this.dtTrigger.next();
       },
       error: console.error,
       complete: () => {},

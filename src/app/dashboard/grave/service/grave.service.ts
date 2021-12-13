@@ -13,6 +13,7 @@ export class GraveService {
   private GraveSubject: Subject<boolean> = new Subject<boolean>();
 
   token: string = sessionStorage.getItem('token') as string;
+  subject: Subject<boolean> = new Subject<boolean>();
 
   constructor(private readonly http: HttpClient) { }
 
@@ -36,6 +37,15 @@ export class GraveService {
 
   public getGravesById(id: string): Observable<Grave> {
     return this.http.get<Grave>(`/api/grave/${id}`);
+  }
+
+  public updateGrave(grave: Grave): Observable<any> {
+      console.log(grave);
+      return this.http
+        .put<Grave>(`/api/grave`, grave)
+        .pipe(catchError((error) => this.handleError(error)),
+        map((data)=> this.subject.next(true)),
+        );
   }
 
   public createGrave(grave: Grave, image?: File): Observable<any> {

@@ -29,6 +29,7 @@
     "datatables.net": "^1.11.3",
     "datatables.net-dt": "^1.11.3",
     "jquery": "^3.6.0",
+    "ngx-currency": "^2.5.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "typeface-poppins": "^1.1.13",

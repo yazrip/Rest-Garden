@@ -8,6 +8,7 @@ import { GraveListComponent } from './grave-list/grave-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from "angular-datatables";
+import { NgxCurrencyModule } from "ngx-currency";
 
 
 
@@ -22,7 +23,8 @@ import { DataTablesModule } from "angular-datatables";
     GraveRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    NgxCurrencyModule
   ]
 })
 export class GraveModule { }

@@ -4,32 +4,31 @@
       <h1 style="color: #D8E9A8; font-size: 50px;">Grave Data</h1>
     </div>
   </div>
-  <div class="table-responsive">
-    <table class="table table-responsive" style="color: #D8E9A8;">
+  <div class="table-responsive-md">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table" style="color: #D8E9A8;">
       <thead>
-        <tr>
-          <th scope="col">Name Grave</th>
+        <tr class="text-center">
+          <th class="colspan">Name Grave</th>
           <th scope="col">Type</th>
           <th scope="col">Available Slots</th>
           <th scope="col">Phone Number</th>
           <th scope="col">Price</th>
           <th scope="col">Address</th>
           <th scope="col">Description</th>
-          <th scope="col">Image</th>
+          <!-- <th scope="col">Image</th> -->
           <th scope="col">Action</th>
         </tr>
       </thead>
-      <ng-container *ngIf="graves.length > 0; else kosong">
-        <tbody *ngFor="let grave of graves">
-          <tr>
-            <td scope="row"><b>{{ grave.name }}</b></td>
-            <td scope="row"> {{ grave.type }} </td>
-            <td scope="row"> {{ grave.availableSlots }} </td>
-            <td scope="row"> {{ grave.phoneNumber }} </td>
-            <td scope="row"> {{ grave.price | currency:'Rp.'}} </td>
-            <td scope="row"> {{ grave.address }} </td>
-            <td scope="row"> {{ grave.description }} </td>
-            <td scope="row"> <img src="{{ grave.image }}" style="width: 250px; height: 150px;"></td>
+        <tbody *ngIf="graves.length > 0; else kosong">
+          <tr *ngFor="let grave of graves" style="background-color: #1E5128;">
+            <td scope="row" class="text-start px-4"><b>{{ grave.name }}</b></td>
+            <td scope="row" class="text-start px-4"> {{ grave.type }} </td>
+            <td scope="row" class="text-end"> {{ grave.availableSlots }} </td>
+            <td scope="row" class="text-end"> {{ grave.phoneNumber }} </td>
+            <td scope="row" class="text-end"> {{ grave.price | currency:'Rp.'}} </td>
+            <td scope="row" class="text-start"> {{ grave.address }} </td>
+            <td scope="row" class="text-start"> {{ grave.description }} </td>
+            <!-- <td scope="row"> <img src="{{ grave.image }}" style="width: 250px; height: 150px;"></td> -->
             <td> 
               <div>
                 <button 
@@ -42,7 +41,6 @@
             </td>
           </tr>
         </tbody>
-      </ng-container>
       <ng-template #kosong>
         <tbody>
           <tr>

@@ -24,7 +24,7 @@ export class GraveFormComponent implements OnInit {
     phoneNumber: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
     address: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required, Validators.maxLength(255)]),
     image: new FormControl('', [Validators.required]),
   });
 

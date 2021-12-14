@@ -19,7 +19,7 @@ export class UserForm2Component implements OnInit {
     password: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [Validators.required]),
-    address: new FormControl('', [Validators.required])
+    address: new FormControl('', [Validators.required, Validators.maxLength(255)])
   });
   
   id: string | null = null;

@@ -7,5 +7,5 @@ export interface Grave {
     price: number,
     address: string,
     description: string,
-    image: string;
+    image?: string;
 }

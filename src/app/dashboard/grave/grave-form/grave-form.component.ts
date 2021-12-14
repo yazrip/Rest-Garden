@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EMPTY } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { delay, map, switchMap } from 'rxjs/operators';
 import { messages } from 'src/environments/environment';
 import { Grave } from '../model/grave-model';
@@ -15,6 +15,7 @@ import { GraveService } from '../service/grave.service';
 export class GraveFormComponent implements OnInit {
 
   image?: File
+  linkGambar: string | undefined;
 
   graveForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -39,6 +40,7 @@ export class GraveFormComponent implements OnInit {
     this.graveForm.get('price')?.setValue(grave.price);
     this.graveForm.get('address')?.setValue(grave.address);
     this.graveForm.get('description')?.setValue(grave.description);
+    // this.graveForm.get('image')?.setValue(grave.image);
   }
 
   grave?: Grave;
@@ -60,6 +62,9 @@ export class GraveFormComponent implements OnInit {
       (grave: Grave) => {
         if (grave) {
           this.setFormValues(grave);
+          this.linkGambar = grave.image
+          console.log(this.linkGambar);
+          
         }
       },
       (error) => console.error(error),
@@ -70,13 +75,25 @@ export class GraveFormComponent implements OnInit {
   addGrave(): void {
     const grave: Grave = this.graveForm.value;
     console.log('grave form value:', grave);
-    this.image = this.graveForm.get('image')?.value
+    this.image = this.graveForm.get('image')?.value 
 
     if (this.graveForm.get('price')?.value < 0) {
       this.graveForm.get('price')?.setValue(0)
     }else if (this.graveForm.get('availableSlots')?.value < 0) {
       this.graveForm.get('availableSlots')?.setValue(0)
-    }{
+    }else if (this.graveForm.get('image')?.value == "") {
+      grave.image = this.linkGambar?.toString();
+      this.graveService.createWithoutImage(grave)
+      .pipe()
+      .subscribe((grave: Grave)=> {
+        this.onReset()
+        this.router.navigateByUrl("/dashboard/grave")
+      },
+      (error : any) => {
+        console.error(error)
+      },
+      )
+    }else {
       this.graveService
       .createGrave(grave, this.image)
       .pipe()
@@ -156,5 +173,4 @@ export class GraveFormComponent implements OnInit {
       this.graveForm.get('image')?.setValue(this.image)
     }
   }
-
 }

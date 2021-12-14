@@ -49,8 +49,12 @@
     </div>
     <div class="mb-3 has-validation">
       <label for="exampleInputPrice" class="form-label" style="color: #D8E9A8;"><b>Price</b></label>
-      <input type="number"
+      <input type="text"
       min="0"
+      currencyMask [options]="{ prefix: 'Rp. ',thousands: '.',decimal: ',',
+      align: 'left',
+      allowNegative: false,
+      precision: 0}"
       class="form-control" 
       id="exampleInputPrice"
       [ngClass]="isFieldValid('price')"
@@ -87,11 +91,16 @@
         id="formFile"
         style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
       />
-    
     </div>
+    <ng-container *ngIf="linkGambar; else elseTemplate">
+    <img src="{{ linkGambar }}" style="width: 250px; height: 150px;">
+    </ng-container>
+    <ng-template #elseTemplate>
+      
+    </ng-template>    
     <div class="row mt-3">
       <div class="col-12 d-flex justify-content-center">
-        <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: #D8E9A8;" (click)="addGrave()" [disabled]="graveForm.invalid"><b>Submit</b></button>
+        <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: #D8E9A8;" (click)="addGrave()"><b>Submit</b></button>
       </div>
     </div>
 </form>  

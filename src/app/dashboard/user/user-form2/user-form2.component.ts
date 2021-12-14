@@ -102,10 +102,10 @@ export class UserForm2Component implements OnInit {
   }
 
   isValid(): boolean {
-    return !this.userForm.get('username')?.value;
+    return !this.userForm.get('username')!.value;
   }
 
-  isFieldValid(fieldName: string): string {
+  isFieldValid(fieldName: string): { [key: string]: boolean } {
     const control: AbstractControl = this.userForm.get(fieldName) as AbstractControl;
 
     const classes = {
@@ -123,14 +123,13 @@ export class UserForm2Component implements OnInit {
     }else if (control && control.valid) {
       classes['is-valid'] = true;
     }
-    return '';
+    return classes
   }
 
   displayErrors(fieldName:string):string {
     const control: AbstractControl = this.userForm.get(fieldName) as AbstractControl;
     const messages: any = {
-      "required":"Field Harus di isi",
-      "minlength":"Field Minimal harus lebih panjang dari {minlength}",
+      "required":"Field must be filled"
     }
 
     if (control && control.errors) {

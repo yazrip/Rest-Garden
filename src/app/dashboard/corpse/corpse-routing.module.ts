@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: '', component: CorpseComponent },
   { path: 'corpse', component: CorpseComponent},
   { path: 'corpse/:id', component: CorpseComponent},
-  { path: ':id', component: CorpseComponent}
+  { path: ':id', component: CorpseComponent},
+  { path: '', loadChildren: () => import('./corpse-form2/corpse-form2.module').then(m => m.CorpseForm2Module) },
 ];
 
 @NgModule({

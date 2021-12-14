@@ -8,8 +8,8 @@ import { CorpseFormComponent } from './corpse-form/corpse-form.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
-import { CorpseMenuComponent } from './corpse-menu/corpse-menu.component';
-
+import { CorpseForm2Component } from './corpse-form2/corpse-form2.component';
+import { CorpseForm2Module } from './corpse-form2/corpse-form2.module';
 
 
 @NgModule({
@@ -17,14 +17,14 @@ import { CorpseMenuComponent } from './corpse-menu/corpse-menu.component';
     CorpseComponent,
     CorpseListComponent,
     CorpseFormComponent,
-    CorpseMenuComponent
   ],
   imports: [
     CommonModule,
     CorpseRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    CorpseForm2Module,
   ]
 })
 export class CorpseModule { }

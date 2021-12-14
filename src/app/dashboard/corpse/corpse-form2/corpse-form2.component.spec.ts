@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CorpseMenuComponent } from './corpse-menu.component';
+import { CorpseForm2Component } from './corpse-form2.component';
 
-describe('CorpseMenuComponent', () => {
-  let component: CorpseMenuComponent;
-  let fixture: ComponentFixture<CorpseMenuComponent>;
+describe('CorpseForm2Component', () => {
+  let component: CorpseForm2Component;
+  let fixture: ComponentFixture<CorpseForm2Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CorpseMenuComponent ]
+      declarations: [ CorpseForm2Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CorpseMenuComponent);
+    fixture = TestBed.createComponent(CorpseForm2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

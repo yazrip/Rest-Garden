@@ -11,24 +11,30 @@
         <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table" style="color: #D8E9A8;">
           <thead>
             <tr class="text-center">
-              <th scope="col">Corpse ID</th> 
+              <!-- <th scope="col">Corpse ID</th> -->
               <th scope="col">Name Corpse</th>
               <th scope="col">Grave Name</th>
               <th scope="col">Block Location</th>
               <th scope="col">Parent Name</th>
               <th scope="col">Birth Date</th>
+              <th scope="col">Action</th>
             </tr>
             </thead>
-              <tbody *ngIf="corpses.length > 0; else kosong"> 
-                <tr *ngFor="let corpse of corpses" class="text-start" style="background-color: #1E5128;"> 
-                  <td scope="row">{{ corpse.id }}</td>
-                  <td scope="row">{{ corpse.name }}</td>
-                  <td scope="row">{{ corpse.grave.name }}</td>
-                  <td scope="row">{{ corpse.location }}</td>
-                  <td scope="row">{{ corpse.parentName }}</td>
-                  <td scope="row">{{ corpse.birthDate }}</td>
-                </tr>
-              </tbody>
+            <tbody *ngIf="corpses.length > 0; else kosong"> 
+              <tr *ngFor="let corpse of corpses" class="text-start" style="background-color: #1E5128;"> 
+                <!-- <td scope="row">{{ corpse.id }}</td> -->
+                <td scope="row">{{ corpse.name }}</td>
+                <td scope="row">{{ corpse.grave.name }}</td>
+                <td scope="row">{{ corpse.location }}</td>
+                <td scope="row">{{ corpse.parentName }}</td>
+                <td scope="row">{{ corpse.birthDate }}</td>
+                <td>
+                  <button type="button" class="btn btn-warning m-1" routerLink="{{ corpse.id }}">
+                    <i class="fas fa-edit" routerLink="{{ corpse.id }}"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
             <ng-template #kosong>
               <tbody>
                   <tr>

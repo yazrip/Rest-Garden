@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observer } from 'rxjs';
+import { EMPTY, Observer } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { Grave } from '../../grave/model/grave-model';
 import { GraveService } from '../../grave/service/grave.service';
 import { Corpses } from '../model/corpse-model';
@@ -30,7 +31,7 @@ export class CorpseForm2Component implements OnInit {
     this.corpseForm.get('graveId')?.setValue(corpse.grave.id);
     this.corpseForm.get('location')?.setValue(corpse.location);
     this.corpseForm.get('parentName')?.setValue(corpse.parentName);
-    this.corpseForm.get('birthDate')?.setValue(corpse.parentName);
+    this.corpseForm.get('birthDate')?.setValue(corpse.birthDate);
   }
   graves: Grave[] = [];
   corpse?: Corpses;
@@ -44,7 +45,22 @@ export class CorpseForm2Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllGrave();
+    this.getAllGrave()
+    this.activatedRoute.params.pipe(
+      map((params: any) => params.id),
+      switchMap((id: string) => {
+        if (!id) { return EMPTY }
+        else { this.id = id; return this.corpseService.getCorpseById(id) }
+      })
+    ).subscribe(
+      (corpse: Corpses) => {
+        if (corpse) {
+          this.setFormValues(corpse);
+        }
+      },
+      (error) => console.error(error),
+      () => { }
+    )
   }
 
   getAllGrave(){

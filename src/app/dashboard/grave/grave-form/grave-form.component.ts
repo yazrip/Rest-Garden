@@ -64,7 +64,7 @@ export class GraveFormComponent implements OnInit {
           this.setFormValues(grave);
           this.linkGambar = grave.image
           console.log(this.linkGambar);
-          
+          this.id = grave.id
         }
       },
       (error) => console.error(error),

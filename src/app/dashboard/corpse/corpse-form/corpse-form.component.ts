@@ -46,7 +46,22 @@ export class CorpseFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllGrave();
+    // this.getAllGrave();
+    this.activatedRoute.params.pipe(
+      map((params: any) => params.id),
+      switchMap((id: string) => {
+        if (!id) { return EMPTY }
+        else { this.id = id; return this.corpseService.getCorpseById(id) }
+      })
+    ).subscribe(
+      (corpse: Corpses) => {
+        if (corpse) {
+          this.setFormValues(corpse);
+        }
+      },
+      (error) => console.error(error),
+      () => { }
+    )
   }
 
   getAllGrave(){

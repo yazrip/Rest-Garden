@@ -13,27 +13,31 @@
       </div>
       <div class="row pt-2" style="color: #D8E9A8;">
       <div class="col-6">
-        <div class="mb-3">
-          <label for="exampleInputName" class="form-label"><b>Name Grave</b></label>
+        <div class="mb-3 has-validation">
+          <label for="exampleInputName" class="form-label"><b>Grave Name</b></label>
           <input type="text" 
           class="form-control" 
           id="exampleInputName" 
+          [ngClass]="isFieldValid('name')"
           formControlName="name"
           style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;" 
           >
+          <div class="invalid-feedback" validation-message [control]="graveForm.controls['name']" [label]="'Grave Name'"></div>
         </div>
       </div>
       <div class="col-6" >
-        <div class="mb-3" >
+        <div class="mb-3 has-validation">
           <label for="exampleInputSlot" class="form-label" ><b>Type</b></label>
           <select id="exampleInputSlot" class="form-select" formControlName="type" style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;">
             <option selected value="Public">Public</option>
             <option value="Private">Private</option>
           </select>
+          <div class="invalid-feedback" validation-message [control]="graveForm.controls['type']" [label]="'Type'"></div>
         </div>
       </div>
     </div>
-    <div class="mb-3 has-validation">
+    <ng-container *ngIf="!id; else kosong">
+      <div class="mb-3 has-validation">
         <label for="exampleInputAvailableSlots" class="form-label" style="color: #D8E9A8;"><b>Available Slots</b></label>
         <input type="number" 
         min="0"
@@ -44,15 +48,21 @@
         style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
         >
       <div class="invalid-feedback" validation-message [control]="graveForm.controls['availableSlots']" [label]="'Available Slots'"></div>
-      </div>
-      <div class="mb-3">
+    </div>
+    </ng-container>
+    <ng-template #kosong>
+  
+    </ng-template>
+      <div class="mb-3 has-validation">
         <label for="exampleInputPhoneNumber" class="form-label" style="color: #D8E9A8;"><b>Phone Number</b></label>
         <input type="text" 
         class="form-control" 
         id="exampleInputPhoneNumber"
         formControlName="phoneNumber"
+        [ngClass]="isFieldValid('phoneNumber')"
         style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
         >
+      <div class="invalid-feedback" validation-message [control]="graveForm.controls['phoneNumber']" [label]="'Phone Number'"></div>
       </div>
       <div class="mb-3 has-validation">
         <label for="exampleInputPrice" class="form-label" style="color: #D8E9A8;"><b>Price</b></label>
@@ -70,34 +80,40 @@
         >
       <div class="invalid-feedback" validation-message [control]="graveForm.controls['price']" [label]="'Price'"></div>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 has-validation">
         <label for="exampleInputAddress" class="form-label" style="color: #D8E9A8;"><b>Address</b></label>
         <input type="text" 
         class="form-control" 
         id="exampleInputAddress"
+        [ngClass]="isFieldValid('address')"
         formControlName="address"
         style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
         >
+        <div class="invalid-feedback" validation-message [control]="graveForm.controls['address']" [label]="'Address'"></div>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 has-validation">
         <label for="exampleInputDescription" class="form-label" style="color: #D8E9A8;"><b>Description</b></label>
         <input type="text" 
         class="form-control" 
         id="exampleInputDescription"
+        [ngClass]="isFieldValid('description')"
         formControlName="description"
         style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
         >
+      <div class="invalid-feedback" validation-message [control]="graveForm.controls['description']" [label]="'Description'"></div>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 has-validation">
         <label for="exampleInputPhoto" class="form-label" style="color: #D8E9A8;"><b>Add Photo</b></label>
         <input
           class="form-control"
           formControlName="image"
           (change)="handleFileUpload($event)"
+          [ngClass]="isFieldValid('image')"
           type="file"
           id="formFile"
           style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
         />
+      <div class="invalid-feedback" validation-message [control]="graveForm.controls['image']" [label]="'Add Photo'"></div>
       </div>
       <ng-container *ngIf="linkGambar; else elseTemplate">
       <img src="{{ linkGambar }}" style="width: 250px; height: 150px;">
@@ -107,7 +123,7 @@
       </ng-template>    
       <div class="row mt-3">
         <div class="col-12 d-flex justify-content-center">
-          <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: white;" (click)="addGrave()" [disabled]="graveForm.invalid" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: white;" (click)="addGrave()" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <b>Submit</b>
           </button>
         </div>

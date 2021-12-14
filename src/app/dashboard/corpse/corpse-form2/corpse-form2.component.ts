@@ -100,14 +100,48 @@ export class CorpseForm2Component implements OnInit {
     return !this.corpseForm.get('username')!.value;
   }
 
-  isFieldValid(fieldName: string): string {
+  isFieldValid(fieldName: string): { [key: string]: boolean } {
     const control: AbstractControl = this.corpseForm.get(fieldName) as AbstractControl;
 
+    const classes = {
+      'is-invalid': false,
+      'is-valid': false
+    }
+
+    control.valid;
+    control.invalid;
+    control.dirty;
+    control.touched;
+
     if (control && control.touched && control.invalid) {
-      return 'is-invalid';
-    } else if (control && control.invalid) {
-      return 'is-valid'
-    } else {
+      classes['is-invalid'] = true;
+    }else if (control && control.valid) {
+      classes['is-valid'] = true;
+    }
+    return classes
+  }
+
+  displayErrors(fieldName:string):string {
+    const control: AbstractControl = this.corpseForm.get(fieldName) as AbstractControl;
+    const messages: any = {
+      "required":"Field must be filled"
+    }
+
+    if (control && control.errors) {
+      const error = Object.values(control.errors).pop();
+      const key: string = Object.keys(control.errors).pop() as string;
+
+      let message = messages[key];
+
+      console.log(message);
+
+      if (key === 'minlength') {
+        console.log(error);
+
+        message = message.replace('{minlength}', error.requiredLength)
+      }
+      return message;
+    }else{
       return '';
     }
   }

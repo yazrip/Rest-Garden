@@ -28,8 +28,10 @@
                         <td style="text-align: start;">{{ user.address }}</td>
                         <td>
                             <div>
-                                <button type="button" class="btn btn-warning m-1" routerLink="{{ user.id }}">
-                                    <i class="fas fa-edit" routerLink="{{ user.id }}"></i>
+                                <button type="button" 
+                                class="btn btn-warning m-1" 
+                                routerLink="/dashboard/user-form2/{{ user.id }}">
+                                    <i class="fas fa-edit"></i>
                                 </button>
                                 <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal" (click)="setId(user.id)" data-bs-target="#exampleModalToggle">
                                     <i class="fas fa-trash"></i>
@@ -99,8 +101,7 @@
                 <div class="col d-flex justify-content-center">
                     <button type="button" class="btn btn-success px-5" data-bs-dismiss="modal" [routerLink]="['/dashboard/user']" style="border-radius: 15px;"><b>OK</b></button>
                 </div>
-            </div>
+            </div>     
         </div>
-        </div>
-</div>
+    </div>
 </div>

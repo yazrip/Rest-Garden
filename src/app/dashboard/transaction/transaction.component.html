@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-end mb-4">
         </div>
         <div class="table-responsive">
-            <table class="table table-responsive" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="color: #D8E9A8;">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table" style="color: #D8E9A8;">
                 <thead class="thead-dark">
                     <tr class="text-center">
                         <th scope="col">User Name</th>
@@ -18,12 +18,12 @@
                 </thead>
                     <tbody *ngIf="transactions.length > 0; else kosong">
                         <tr *ngFor="let transaction of transactions" style="background-color: #1E5128;">
-                            <td>{{ transaction.userName }}</td>
-                            <td>{{ transaction.graveName }}</td>
+                            <td style="text-align: start;">{{ transaction.userName }}</td>
+                            <td style="text-align: start;">{{ transaction.graveName }}</td>
                             <td style="text-align: end;">{{ transaction.gravePrice | currency:'Rp.' }}</td>
                             <td style="text-align: end;">{{ transaction.totalSlot }}</td>
-                            <td>{{ transaction.date.toString() | date:'longDate' }}</td>
-                            <td>{{ transaction.description }}</td>
+                            <td style="text-align: start;">{{ transaction.date.toString() | date:'longDate' }}</td>
+                            <td style="text-align: start;">{{ transaction.description }}</td>
                         </tr>
                     </tbody>
                 <ng-template #kosong>

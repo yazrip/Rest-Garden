@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observer } from 'rxjs';
+import { Observer, Subject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../model/user-model';
 import { UserService } from '../service/user.service';
@@ -15,9 +15,18 @@ export class UserListComponent implements OnInit {
   id!: string;
   subscriber?: Observer<any>
 
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
   constructor(private readonly userService: UserService) { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      lengthMenu: [5,10,20,50],
+      pageLength: 5,
+      // processing: true
+    };
     this.getAllUser()
     this.userService.listUpdated()
       .subscribe((updated: boolean) => {
@@ -31,7 +40,11 @@ export class UserListComponent implements OnInit {
   }
   getAllUser() {
     this.subscriber = {
-      next: (data: any) => {this.users = data, console.log(data)},
+      next: (data: any) => {
+        this.users = data; 
+        console.log(data);
+        this.dtTrigger.next();
+       },
       error: console.error,
       complete: () => {},
     }

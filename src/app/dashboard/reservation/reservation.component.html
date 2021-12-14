@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-end mb-4">
         </div>
         <div class="table-responsive">
-            <table class="table table-responsive" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="color: #D8E9A8;">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table" style="color: #D8E9A8;">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">User Name</th>
@@ -18,12 +18,12 @@
                 </thead>
                     <tbody *ngIf="reservations.length > 0; else kosong">
                         <tr *ngFor="let reservation of reservationsClone" style="background-color: #1E5128;">
-                            <td>{{ reservation.userName }}</td>
-                            <td>{{ reservation.graveName }}</td>
+                            <td style="text-align: start;">{{ reservation.userName }}</td>
+                            <td style="text-align: start;">{{ reservation.graveName }}</td>
                             <td style="text-align: end;">{{ reservation.gravePrice | currency:'Rp.' }}</td>
                             <td style="text-align: end;">{{ reservation.totalSlot }}</td>
-                            <td>{{ reservation.expiredDate.toString() | date:'longDate'}}</td>
-                            <td>{{ reservation.description }}</td>
+                            <td style="text-align: start;">{{ reservation.expiredDate.toString() | date:'longDate'}}</td>
+                            <td style="text-align: start;">{{ reservation.description }}</td>
                         </tr>
                     </tbody>
                 <ng-template #kosong>

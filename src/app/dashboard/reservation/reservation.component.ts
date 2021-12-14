@@ -14,18 +14,19 @@ export class ReservationComponent implements OnInit {
   reservations: Reservation[] = []
   reservationsClone: Reservation[] = []
   subscriber?: Observer<any>;
-  
-  constructor(private readonly reservationService: ReservationService) { }
+
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
+  
+  constructor(private readonly reservationService: ReservationService) { }
 
   ngOnInit(): void {
-    this.dtOptions={
+    this.dtOptions = {
       pagingType: 'full_numbers',
+      lengthMenu: [5,10,20,50],
       pageLength: 5,
-      lengthMenu: [5, 10, 15, 50],
-      processing: true
-    }
+      // processing: true
+    };
     this.getAll()
     this.reservationService.listUpdated().subscribe((updated: boolean) => {
       if (updated) {

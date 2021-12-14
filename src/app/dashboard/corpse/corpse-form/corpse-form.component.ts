@@ -21,6 +21,7 @@ export class CorpseFormComponent implements OnInit {
     graveId: new FormControl('', [Validators.required]),
     location: new FormControl('', [Validators.required]),
     parentName: new FormControl('', [Validators.required]),
+    birthDate: new FormControl('', [Validators.required]),
   });
   id: string | null = null;
 
@@ -31,6 +32,7 @@ export class CorpseFormComponent implements OnInit {
     this.corpseForm.get('graveId')?.setValue(corpse.grave.id);
     this.corpseForm.get('location')?.setValue(corpse.location);
     this.corpseForm.get('parentName')?.setValue(corpse.parentName);
+    this.corpseForm.get('birthDate')?.setValue(corpse.parentName);
   }
   graves: Grave[] = [];
   corpse?: Corpses;
@@ -95,6 +97,7 @@ export class CorpseFormComponent implements OnInit {
       return '';
     }
   }
+  
 }
 
 

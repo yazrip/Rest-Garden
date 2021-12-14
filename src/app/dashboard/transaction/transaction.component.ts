@@ -13,18 +13,19 @@ export class TransactionComponent implements OnInit {
   transactions: Transaction[] = []
   transactionsClone: Transaction[] = []
   subscriber?: Observer<any>;
-  
-  constructor(private readonly transactionService: TransactionService) { }
+
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   
+  constructor(private readonly transactionService: TransactionService) { }
+  
   ngOnInit(): void {
-    this.dtOptions={
+    this.dtOptions = {
       pagingType: 'full_numbers',
+      lengthMenu: [5,10,20,50],
       pageLength: 5,
-      lengthMenu: [5, 10, 15, 50],
-      processing: true
-    }
+      // processing: true
+    };
     this.getAll()
     this.transactionService.listUpdated().subscribe((updated: boolean) => {
       if (updated) {
@@ -36,10 +37,10 @@ export class TransactionComponent implements OnInit {
   getAll(){
     this.subscriber = {
       next: (data: any) => {
-        this.transactions = data; 
-        console.log(data);
-        this.dtTrigger.next();
-      },
+        this.transactions = data;
+         console.log(data);
+         this.dtTrigger.next();
+        },
       error: console.error,
       complete: () => {},
     };

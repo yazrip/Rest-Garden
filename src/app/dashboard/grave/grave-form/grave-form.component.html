@@ -92,7 +92,12 @@
         style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
       />
     </div>
+    <ng-container *ngIf="linkGambar; else elseTemplate">
     <img src="{{ linkGambar }}" style="width: 250px; height: 150px;">
+    </ng-container>
+    <ng-template #elseTemplate>
+      
+    </ng-template>    
     <div class="row mt-3">
       <div class="col-12 d-flex justify-content-center">
         <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: #D8E9A8;" (click)="addGrave()"><b>Submit</b></button>

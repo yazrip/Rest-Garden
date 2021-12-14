@@ -39,14 +39,24 @@ export class GraveService {
     return this.http.get<Grave>(`/api/grave/${id}`);
   }
 
-  public updateGrave(grave: Grave): Observable<any> {
+  public createWithoutImage(grave: Grave): Observable<any> {
+    if (grave.id) {
       console.log(grave);
       return this.http
         .put<Grave>(`/api/grave`, grave)
         .pipe(catchError((error) => this.handleError(error)),
         map((data)=> this.subject.next(true)),
         );
-  }
+    } else {
+      console.log(grave);
+      return this.http
+        .post<Grave>(`/api/grave`, grave)
+        .pipe(
+          catchError((error) => this.handleError(error)),
+          map((data)=> this.subject.next(true)),
+        );
+    }
+  };
 
   public createGrave(grave: Grave, image?: File): Observable<any> {
     const formData: FormData = new FormData();

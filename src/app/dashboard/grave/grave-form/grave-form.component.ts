@@ -83,7 +83,7 @@ export class GraveFormComponent implements OnInit {
       this.graveForm.get('availableSlots')?.setValue(0)
     }else if (this.graveForm.get('image')?.value == "") {
       grave.image = this.linkGambar?.toString();
-      this.graveService.updateGrave(grave)
+      this.graveService.createWithoutImage(grave)
       .pipe()
       .subscribe((grave: Grave)=> {
         this.onReset()

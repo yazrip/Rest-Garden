@@ -31,7 +31,7 @@ export class CorpseForm2Component implements OnInit {
     this.corpseForm.get('graveId')?.setValue(corpse.grave.id);
     this.corpseForm.get('location')?.setValue(corpse.location);
     this.corpseForm.get('parentName')?.setValue(corpse.parentName);
-    this.corpseForm.get('birthDate')?.setValue(corpse.parentName);
+    this.corpseForm.get('birthDate')?.setValue(corpse.birthDate);
   }
   graves: Grave[] = [];
   corpse?: Corpses;
@@ -45,6 +45,7 @@ export class CorpseForm2Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getAllGrave()
     this.activatedRoute.params.pipe(
       map((params: any) => params.id),
       switchMap((id: string) => {

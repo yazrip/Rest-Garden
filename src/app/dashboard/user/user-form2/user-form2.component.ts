@@ -46,6 +46,21 @@ export class UserForm2Component implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    // this.activatedRoute.params.pipe(
+    //   map((params: any) => params.id),
+    //   switchMap((id: string) => {
+    //     if (!id) { return EMPTY }
+    //     else { this.id = id; return this.userService.getUsersById(id) }
+    //   })
+    // ).subscribe(
+    //   (user: User) => {
+    //     if (user) {
+    //       this.setFormValues(user);
+    //     }
+    //   },
+    //   (error) => console.error(error),
+    //   () => { }
+    // )
     this.activatedRoute.params.pipe(
       map((params: any) => params.id),
       switchMap((id: string) => {
@@ -55,6 +70,7 @@ export class UserForm2Component implements OnInit {
     ).subscribe(
       (user: User) => {
         if (user) {
+          this.id = user.id
           this.setFormValues(user);
         }
       },

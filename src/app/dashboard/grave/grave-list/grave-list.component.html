@@ -3,6 +3,9 @@
     <div class="col">
       <h1 style="color: #D8E9A8; font-size: 50px;">Grave Data</h1>
     </div>
+    <div class="col-6 d-flex align-items-center justify-content-end">
+      <div class="btn btn-warning shadow px-4" style="border-radius: 15px;" [routerLink]="['/dashboard/form']"><b>Add Grave Data</b></div>
+    </div>
   </div>
   <div class="table-responsive">
     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table" style="color: #D8E9A8;">
@@ -34,7 +37,7 @@
                 <button 
                 type="button" 
                 class="btn btn-warning m-1"
-                routerLink="/dashboard/grave/{{ grave.id }}">
+                routerLink="/dashboard/form/{{ grave.id }}">
                 <i class="bi bi-box-arrow-right"></i>
                 <i class="fas fa-edit"></i></button>
               </div>

@@ -13,7 +13,7 @@ export class GraveService {
   private GraveSubject: Subject<boolean> = new Subject<boolean>();
 
   token: string = sessionStorage.getItem('token') as string;
-  subject: Subject<boolean> = new Subject<boolean>();
+  // subject: Subject<boolean> = new Subject<boolean>();
 
   constructor(private readonly http: HttpClient) { }
 
@@ -31,9 +31,9 @@ export class GraveService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  public listUpdated(): Observable<boolean> {
-    return this.GraveSubject.asObservable();
-  }
+  // public listUpdated(): Observable<boolean> {
+  //   return this.GraveSubject.asObservable();
+  // }
 
   public getGravesById(id: string): Observable<Grave> {
     return this.http.get<Grave>(`/api/grave/${id}`);
@@ -45,7 +45,7 @@ export class GraveService {
       return this.http
         .put<Grave>(`/api/grave`, grave)
         .pipe(catchError((error) => this.handleError(error)),
-        map((data)=> this.subject.next(true)),
+        // map((data)=> this.subject.next(true)),
         );
     } else {
       console.log(grave);
@@ -53,7 +53,7 @@ export class GraveService {
         .post<Grave>(`/api/grave`, grave)
         .pipe(
           catchError((error) => this.handleError(error)),
-          map((data)=> this.subject.next(true)),
+          // map((data)=> this.subject.next(true)),
         );
     }
   };

@@ -1,0 +1,139 @@
+<app-sidebar-new></app-sidebar-new>
+<div class="content mb-3">
+  <form class="card shadow-lg mt-4 p-4 mx-3" style="border-radius: 20px; background-color: #1E5128;" [formGroup] = "graveForm">
+    <div class="row mb-4">
+      <div class="col">
+        <h1 style="color: #D8E9A8; font-size: 50px;">Grave Form</h1>
+      </div>
+      <div class="col-6 d-flex justify-content-end align-items-center">
+        <div class="btn btn-danger shadow px-4" [routerLink]="['/dashboard/grave']" style="border-radius: 15px;">
+            <i class="fas fa-arrow-left"></i><b> Back</b>
+        </div>
+      </div>
+      </div>
+      <div class="row pt-2" style="color: #D8E9A8;">
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="exampleInputName" class="form-label"><b>Name Grave</b></label>
+          <input type="text" 
+          class="form-control" 
+          id="exampleInputName" 
+          formControlName="name"
+          style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;" 
+          >
+        </div>
+      </div>
+      <div class="col-6" >
+        <div class="mb-3" >
+          <label for="exampleInputSlot" class="form-label" ><b>Type</b></label>
+          <select id="exampleInputSlot" class="form-select" formControlName="type" style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;">
+            <option selected value="Public">Public</option>
+            <option value="Private">Private</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3 has-validation">
+        <label for="exampleInputAvailableSlots" class="form-label" style="color: #D8E9A8;"><b>Available Slots</b></label>
+        <input type="number" 
+        min="0"
+        class="form-control" 
+        id="exampleInputPhone"
+        formControlName="availableSlots"
+        [ngClass]="isFieldValid('availableSlots')"
+        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        >
+      <div class="invalid-feedback" validation-message [control]="graveForm.controls['availableSlots']" [label]="'Available Slots'"></div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPhoneNumber" class="form-label" style="color: #D8E9A8;"><b>Phone Number</b></label>
+        <input type="text" 
+        class="form-control" 
+        id="exampleInputPhoneNumber"
+        formControlName="phoneNumber"
+        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        >
+      </div>
+      <div class="mb-3 has-validation">
+        <label for="exampleInputPrice" class="form-label" style="color: #D8E9A8;"><b>Price</b></label>
+        <input type="text"
+        min="0"
+        currencyMask [options]="{ prefix: 'Rp. ',thousands: '.',decimal: ',',
+        align: 'left',
+        allowNegative: false,
+        precision: 0}"
+        class="form-control" 
+        id="exampleInputPrice"
+        [ngClass]="isFieldValid('price')"
+        formControlName="price"
+        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        >
+      <div class="invalid-feedback" validation-message [control]="graveForm.controls['price']" [label]="'Price'"></div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputAddress" class="form-label" style="color: #D8E9A8;"><b>Address</b></label>
+        <input type="text" 
+        class="form-control" 
+        id="exampleInputAddress"
+        formControlName="address"
+        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputDescription" class="form-label" style="color: #D8E9A8;"><b>Description</b></label>
+        <input type="text" 
+        class="form-control" 
+        id="exampleInputDescription"
+        formControlName="description"
+        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPhoto" class="form-label" style="color: #D8E9A8;"><b>Add Photo</b></label>
+        <input
+          class="form-control"
+          formControlName="image"
+          (change)="handleFileUpload($event)"
+          type="file"
+          id="formFile"
+          style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+        />
+      </div>
+      <ng-container *ngIf="linkGambar; else elseTemplate">
+      <img src="{{ linkGambar }}" style="width: 250px; height: 150px;">
+      </ng-container>
+      <ng-template #elseTemplate>
+        
+      </ng-template>    
+      <div class="row mt-3">
+        <div class="col-12 d-flex justify-content-center">
+          <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: white;" (click)="addGrave()" [disabled]="graveForm.invalid" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <b>Submit</b>
+          </button>
+        </div>
+      </div>
+</form>
+</div>
+<div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" [routerLink]="['/dashboard/grave']" aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+                <h3>Data Saved Successfully</h3>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+                <button type="button" class="btn btn-success px-5" data-bs-dismiss="modal" [routerLink]="['/dashboard/grave']" style="border-radius: 15px;"><b>OK</b></button>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>

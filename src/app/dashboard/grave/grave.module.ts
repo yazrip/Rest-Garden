@@ -10,8 +10,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from "angular-datatables";
 import { NgxCurrencyModule } from "ngx-currency";
 
-
-
 @NgModule({
   declarations: [
     GraveComponent,

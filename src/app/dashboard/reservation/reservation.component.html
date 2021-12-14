@@ -16,7 +16,6 @@
                         <th scope="col">Description</th> 
                     </tr>
                 </thead>
-                <ng-container >
                     <tbody *ngIf="reservations.length > 0; else kosong">
                         <tr *ngFor="let reservation of reservationsClone" style="background-color: #1E5128;">
                             <td style="text-align: start;">{{ reservation.userName }}</td>
@@ -27,7 +26,6 @@
                             <td style="text-align: start;">{{ reservation.description }}</td>
                         </tr>
                     </tbody>
-                </ng-container>
                 <ng-template #kosong>
                     <tbody>
                         <tr>

@@ -28,12 +28,12 @@ export class UserListComponent implements OnInit {
       // processing: true
     };
     this.getAllUser()
-    this.userService.listUpdated()
-      .subscribe((updated: boolean) => {
-      if (updated) {
-        this.getAllUser();
-      }
-    });
+    // this.userService.listUpdated()
+    //   .subscribe((updated: boolean) => {
+    //   if (updated) {
+    //     this.getAllUser();
+    //   }
+    // });
   }
   setId(id: string){
     this.id = id;

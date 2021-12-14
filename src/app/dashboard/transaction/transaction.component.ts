@@ -18,7 +18,7 @@ export class TransactionComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
   
   constructor(private readonly transactionService: TransactionService) { }
-
+  
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',

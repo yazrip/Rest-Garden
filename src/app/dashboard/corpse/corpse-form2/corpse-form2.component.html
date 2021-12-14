@@ -1,81 +1,96 @@
-<form class="card shadow-lg mt-4 p-4 mx-3" style="border-radius: 20px; background-color: #1E5128;" [formGroup]="corpseForm">
-    <div class="row mb-4">
-      <div class="col">
-        <h1 style="color: #D8E9A8; font-size: 50px;">Corpse Form</h1>
-      </div>
-    </div>
-      <div class="row pt-2" style="color: #D8E9A8;">
-      <div class="col-6">
+<app-sidebar-new></app-sidebar-new>
+<div class="content mb-3">
+    <form class="card shadow-lg mt-4 p-4 mx-3" style="border-radius: 20px; background-color: #1E5128;" [formGroup]="corpseForm">
+        <div class="row mb-4">
+            <div class="col-6">
+                <h1 style="color: #D8E9A8; font-size: 50px;">Corpse Form</h1>
+            </div>
+            <div class="col-6 d-flex justify-content-end align-items-center">
+                <div class="btn btn-danger shadow px-4" [routerLink]="['/dashboard/corpse']" style="border-radius: 15px;">
+                    <i class="fas fa-arrow-left"></i><b> Back</b>
+                </div>
+            </div>
+        </div>
+          <div class="row pt-2" style="color: #D8E9A8;">
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="exampleInputName" class="form-label"><b>Name Corpse</b></label>
+              <input type="text" 
+              class="form-control" 
+              id="exampleInputName" 
+              formControlName="name" 
+              style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+              >
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="exampleInputGraveName" class="form-label" style="color: #D8E9A8;"><b>Grave Name</b></label>
+              <select class="form-control" name="graveId" id="graveId" formControlName="graveId" style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;">
+                <ng-container *ngFor="let grave of graves">
+                <option value="{{grave.id}}">{{grave.name}}</option>
+              </ng-container>
+              </select>
+            </div>
+          </div>
+        </div>
         <div class="mb-3">
-          <label for="exampleInputName" class="form-label"><b>Name Corpse</b></label>
+          <label for="exampleInputLocation" class="form-label" style="color: #D8E9A8;"><b>Location</b></label>
           <input type="text" 
           class="form-control" 
-          id="exampleInputName" 
-          formControlName="name" 
+          id="exampleInputLocation"
+          formControlName="location"
           style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
           >
         </div>
-      </div>
-      <div class="col-6">
-        <div class="mb-3">
-          <label for="exampleInputGraveName" class="form-label" style="color: #D8E9A8;"><b>Grave Name</b></label>
-          <select class="form-control" name="graveId" id="graveId" formControlName="graveId" style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;">
-            <ng-container *ngFor="let grave of graves">
-            <option value="{{grave.id}}">{{grave.name}}</option>
-          </ng-container>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputLocation" class="form-label" style="color: #D8E9A8;"><b>Location</b></label>
-      <input type="text" 
-      class="form-control" 
-      id="exampleInputLocation"
-      formControlName="location"
-      style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
-      >
-    </div>
-      <div class="mb-3">
-        <label for="exampleInputType" class="form-label" style="color: #D8E9A8;"><b>Parent Name</b></label>
-        <input type="text" 
-        class="form-control" 
-        id="exampleInputType"
-        formControlName="parentName"
-        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
-        >
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputBirthDate" class="form-label" style="color: #D8E9A8;"><b>Birth Date</b></label>
-        <input type="date" 
-        class="form-control" 
-        id="exampleInputBirthDate"
-        formControlName="birthDate"
-        style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
-        >
-      </div>
-       
-      <div class="row mt-3">
-        <div class="col-12 d-flex justify-content-center">
-          <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: white;" (click)="addCorpse()" [disabled]="corpseForm.invalid" data-bs-toggle="modal" data-bs-target="#overlay">
-            <b>Submit</b>
-          </button>
-        </div>
-      </div>
-  </form>
-  <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="mb-3">
+            <label for="exampleInputType" class="form-label" style="color: #D8E9A8;"><b>Parent Name</b></label>
+            <input type="text" 
+            class="form-control" 
+            id="exampleInputType"
+            formControlName="parentName"
+            style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+            >
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputBirthDate" class="form-label" style="color: #D8E9A8;"><b>Birth Date</b></label>
+            <input type="date" 
+            class="form-control" 
+            id="exampleInputBirthDate"
+            formControlName="birthDate"
+            style="background-color: #D8E9A8; color: #1E5128; border-radius: 10px; border-style: none;"
+            >
+          </div>
+           
+          <div class="row mt-3">
+            <div class="col-12 d-flex justify-content-center">
+              <button type="submit" class="btn" style="border-radius: 20px; width: 130px; background-color: #4E9F3D; color: white;" (click)="addCorpse()" [disabled]="corpseForm.invalid" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <b>Submit</b>
+              </button>
+            </div>
+          </div>
+    </form>
+</div>
+<div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
         <div class="modal-body">
-          <h3>Data Saved Successfully</h3>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+            <div class="row">
+                <div class="col d-flex justify-content-end">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" [routerLink]="['/dashboard/corpse']" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                    <h3>Data Saved Successfully</h3>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-success px-5" data-bs-dismiss="modal" [routerLink]="['/dashboard/corpse']" style="border-radius: 15px;"><b>OK</b></button>
+                </div>
+            </div>
         </div>
       </div>
     </div>
   </div>
-  

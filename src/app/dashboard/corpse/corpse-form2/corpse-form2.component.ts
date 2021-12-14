@@ -66,7 +66,7 @@ export class CorpseForm2Component implements OnInit {
       .pipe()
       .subscribe((corpse: Corpses)=> {
         this.onReset()
-        this.router.navigateByUrl("/dashboard/corpse")
+        // this.router.navigateByUrl("/dashboard/corpse")
       },
       (error : any) => {
         console.error(error)

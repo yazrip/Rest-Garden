@@ -7,4 +7,6 @@ export interface Transaction{
     totalSlot: number;
     date: String;
     description: String;
+    type: string;
+    status: string;
 }

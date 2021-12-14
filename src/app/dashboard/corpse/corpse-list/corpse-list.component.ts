@@ -26,11 +26,11 @@ export class CorpseListComponent implements OnInit {
       // processing: true
     };
     this.getAllCorpse()
-    this.corpseService.listUpdated().subscribe((updated: boolean) => {
-      if (updated) {
-        this.getAllCorpse();
-      }
-    });
+    // this.corpseService.listUpdated().subscribe((updated: boolean) => {
+    //   if (updated) {
+    //     this.getAllCorpse();
+    //   }
+    
   }
   getAllCorpse() {
     this.subscriber = {

@@ -11,7 +11,7 @@ import { Corpses } from '../model/corpse-model';
 export class CorpseService {
 
   readonly storage: Storage = sessionStorage;
-  subject: Subject<boolean> = new Subject<boolean>();
+  // subject: Subject<boolean> = new Subject<boolean>();
 
   token: string = sessionStorage.getItem('token') as string;
 
@@ -31,9 +31,9 @@ export class CorpseService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  public listUpdated(): Observable<boolean> {
-    return this.subject.asObservable();
-  }
+  // public listUpdated(): Observable<boolean> {
+  //   return this.subject.asObservable();
+  // }
 
   public addCorpse(corpse: Corpses): Observable<any> {
     if (corpse.id) {
@@ -41,7 +41,7 @@ export class CorpseService {
       return this.http
         .put<Corpses>(`/api/corpse`, corpse)
         .pipe(catchError((error) => this.handleError(error)),
-        map((data)=> this.subject.next(true)),
+        // map((data)=> this.subject.next(true)),
         );
     } else {
       console.log(corpse);
@@ -49,7 +49,7 @@ export class CorpseService {
         .post<Corpses>(`/api/corpse`, corpse)
         .pipe(
           catchError((error) => this.handleError(error)),
-          map((data)=> this.subject.next(true)),
+          // map((data)=> this.subject.next(true)),
         );
     }
   };

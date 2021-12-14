@@ -7,6 +7,7 @@ import { CorpseListComponent } from './corpse-list/corpse-list.component';
 import { CorpseFormComponent } from './corpse-form/corpse-form.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CorpseRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ]
 })
 export class CorpseModule { }

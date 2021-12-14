@@ -7,6 +7,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -21,6 +22,7 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
     UserRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    DataTablesModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger', // set defaults here
     }),

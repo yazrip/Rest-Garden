@@ -3,12 +3,9 @@
     <div class="card shadow-lg mt-3 mb-5 mx-3 p-4" style="background-color: #1E5128; border-radius: 20px; border-style: none;">
         <h1 class="mb-5" style="color: #D8E9A8; font-size: 50px;">Reservation List</h1>
         <div class="d-flex justify-content-end mb-4">
-            <div class="div">
-                <input type="text" class="px-3" placeholder="Search here" (keyup)="liveSearch($event)" style="border-style: none; height: 38px; border-radius: 10px;">
-            </div>
         </div>
         <div class="table-responsive">
-            <table class="table table-responsive" style="color: #D8E9A8;">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table" style="color: #D8E9A8;">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">User Name</th>
@@ -19,15 +16,15 @@
                         <th scope="col">Description</th> 
                     </tr>
                 </thead>
-                <ng-container *ngIf="reservations.length > 0; else kosong">
-                    <tbody *ngFor="let reservation of reservationsClone">
-                        <tr>
-                            <td>{{ reservation.userName }}</td>
-                            <td>{{ reservation.graveName }}</td>
-                            <td>{{ reservation.gravePrice | currency:'Rp.' }}</td>
-                            <td>{{ reservation.totalSlot }}</td>
-                            <td>{{ reservation.expiredDate.toString() | date:'longDate'}}</td>
-                            <td>{{ reservation.description }}</td>
+                <ng-container >
+                    <tbody *ngIf="reservations.length > 0; else kosong">
+                        <tr *ngFor="let reservation of reservationsClone" style="background-color: #1E5128;">
+                            <td style="text-align: start;">{{ reservation.userName }}</td>
+                            <td style="text-align: start;">{{ reservation.graveName }}</td>
+                            <td style="text-align: end;">{{ reservation.gravePrice | currency:'Rp.' }}</td>
+                            <td style="text-align: end;">{{ reservation.totalSlot }}</td>
+                            <td style="text-align: start;">{{ reservation.expiredDate.toString() | date:'longDate'}}</td>
+                            <td style="text-align: start;">{{ reservation.description }}</td>
                         </tr>
                     </tbody>
                 </ng-container>

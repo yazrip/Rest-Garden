@@ -6,4 +6,5 @@ export interface Corpses{
     parentName: string,
     location: string,
     grave: Grave,
+    birthDate: Date,
 }

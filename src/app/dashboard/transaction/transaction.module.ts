@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TransactionRoutingModule } from './transaction-routing.module';
 import { TransactionComponent } from './transaction.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     TransactionRoutingModule,
-    SharedModule
+    SharedModule,
+    DataTablesModule
   ]
 })
 export class TransactionModule { }

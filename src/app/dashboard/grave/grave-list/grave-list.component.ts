@@ -27,12 +27,12 @@ export class GraveListComponent implements OnInit {
       // processing: true
     };
     this.getAllGrave()
-    this.graveService.listUpdated()
-      .subscribe((updated: boolean) => {
-      if (updated) {
-        this.getAllGrave();
-      }
-    });
+    // this.graveService.listUpdated()
+    //   .subscribe((updated: boolean) => {
+    //   if (updated) {
+    //     this.getAllGrave();
+    //   }
+    // });
   }
   
   getAllGrave(){

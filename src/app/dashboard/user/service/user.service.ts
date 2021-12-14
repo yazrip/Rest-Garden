@@ -10,7 +10,7 @@ import { User } from '../model/user-model';
 export class UserService {
 
   readonly storage: Storage = sessionStorage;
-  subject: Subject<boolean> = new Subject<boolean>();
+  // subject: Subject<boolean> = new Subject<boolean>();
 
   token: string = sessionStorage.getItem('token') as string;
 
@@ -34,9 +34,9 @@ export class UserService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  public listUpdated(): Observable<boolean> {
-    return this.subject.asObservable();
-  }
+  // public listUpdated(): Observable<boolean> {
+  //   return this.subject.asObservable();
+  // }
 
   public addUser(user: User): Observable<any> {
     if (user.id) {
@@ -44,7 +44,7 @@ export class UserService {
       return this.http
         .put<User>(`/api/user`, user)
         .pipe(catchError((error) => this.handleError(error)),
-        map((data)=> this.subject.next(true)),
+        // map((data)=> this.subject.next(true)),
         );
     } else {
       console.log(user);
@@ -52,7 +52,7 @@ export class UserService {
         .post<User>(`/api/register`, user)
         .pipe(
           catchError((error) => this.handleError(error)),
-          map((data)=> this.subject.next(true)),
+          // map((data)=> this.subject.next(true)),
         );
     }
   };

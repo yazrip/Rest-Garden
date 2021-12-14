@@ -22,8 +22,8 @@ export class FormComponent implements OnInit {
     availableSlots: new FormControl('', [Validators.required, Validators.min(0)]),
     phoneNumber: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
-    address: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required, Validators.maxLength(255)]),
+    description: new FormControl('', [Validators.required, Validators.maxLength(255)]),
     image: new FormControl('', [Validators.required]),
   });
 

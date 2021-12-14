@@ -20,8 +20,8 @@
                         <tr *ngFor="let reservation of reservationsClone" style="background-color: #1E5128;">
                             <td>{{ reservation.userName }}</td>
                             <td>{{ reservation.graveName }}</td>
-                            <td>{{ reservation.gravePrice | currency:'Rp.' }}</td>
-                            <td>{{ reservation.totalSlot }}</td>
+                            <td style="text-align: end;">{{ reservation.gravePrice | currency:'Rp.' }}</td>
+                            <td style="text-align: end;">{{ reservation.totalSlot }}</td>
                             <td>{{ reservation.expiredDate.toString() | date:'longDate'}}</td>
                             <td>{{ reservation.description }}</td>
                         </tr>

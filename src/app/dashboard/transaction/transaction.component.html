@@ -20,8 +20,8 @@
                         <tr *ngFor="let transaction of transactions" style="background-color: #1E5128;">
                             <td>{{ transaction.userName }}</td>
                             <td>{{ transaction.graveName }}</td>
-                            <td>{{ transaction.gravePrice | currency:'Rp.' }}</td>
-                            <td>{{ transaction.totalSlot }}</td>
+                            <td style="text-align: end;">{{ transaction.gravePrice | currency:'Rp.' }}</td>
+                            <td style="text-align: end;">{{ transaction.totalSlot }}</td>
                             <td>{{ transaction.date.toString() | date:'longDate' }}</td>
                             <td>{{ transaction.description }}</td>
                         </tr>

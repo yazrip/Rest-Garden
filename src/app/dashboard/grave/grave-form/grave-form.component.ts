@@ -39,7 +39,6 @@ export class GraveFormComponent implements OnInit {
     this.graveForm.get('price')?.setValue(grave.price);
     this.graveForm.get('address')?.setValue(grave.address);
     this.graveForm.get('description')?.setValue(grave.description);
-    this.graveForm.get('image')?.setValue(grave.image);
   }
 
   grave?: Grave;

@@ -35,6 +35,10 @@ export class CorpseService {
   //   return this.subject.asObservable();
   // }
 
+  public getCorpseById(id: string): Observable<Corpses> {
+    return this.http.get<Corpses>(`/api/corpse/${id}`);
+  }
+
   public addCorpse(corpse: Corpses): Observable<any> {
     if (corpse.id) {
       console.log(corpse);
